@@ -1,0 +1,63 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pierres
+      MYSQL_USER: pierres
+      MYSQL_PASSWORD: pierres
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--protocol=tcp"]
+      interval: 5s
+      retries: 15
+
+  php:
+    build:
+      context: ./stardew-api
+      dockerfile: Dockerfile.dev
+      network: host
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: pierres
+      DB_USERNAME: pierres
+      DB_PASSWORD: pierres
+      APP_URL: http://localhost:8080
+      SANCTUM_STATEFUL_DOMAINS: localhost:8080
+      SESSION_DOMAIN: localhost
+      SESSION_SECURE_COOKIE: "false"
+    command: sh -c "composer install --no-interaction --prefer-dist && php artisan serve --host=0.0.0.0 --port=8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./stardew-api:/app
+      - php_vendor:/app/vendor
+
+  front:
+    image: node:22-alpine
+    working_dir: /app
+    environment:
+      VITE_API_BASE_URL: /
+    volumes:
+      - ./stardew-front:/app
+      - front_node_modules:/app/node_modules
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+
+  proxy:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./proxy/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php
+      - front
+
+volumes:
+  mysql_data:
+  php_vendor:
+  front_node_modules:

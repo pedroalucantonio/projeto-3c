@@ -1,0 +1,1156 @@
+time="2026-11-11T11:41:32-03:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [php internal] load build definition from Dockerfile.dev
+#1 transferring dockerfile: 846B done
+#1 DONE 0.0s
+
+#2 [php internal] load metadata for docker.io/library/php:8.4-cli-trixie
+#2 DONE 0.1s
+
+#3 [php internal] load metadata for docker.io/library/composer:2
+#3 DONE 1.2s
+
+#4 [php internal] load .dockerignore
+#4 transferring context: 69B done
+#4 DONE 0.0s
+
+#5 [php] FROM docker.io/library/composer:2@sha256:ca11f643d7791ebdd90a34fc20caf11380d434007ae539a9ea75cd9212e13dca
+#5 resolve docker.io/library/composer:2@sha256:ca11f643d7791ebdd90a34fc20caf11380d434007ae539a9ea75cd9212e13dca 0.0s done
+#5 DONE 0.0s
+
+#6 [php stage-0 1/6] FROM docker.io/library/php:8.4-cli-trixie@sha256:d63e8b80cd4c6cfd01cfa7c910522e299cdc7ca1a2b6d6563db48df3c17e6c55
+#6 resolve docker.io/library/php:8.4-cli-trixie@sha256:d63e8b80cd4c6cfd01cfa7c910522e299cdc7ca1a2b6d6563db48df3c17e6c55 0.0s done
+#6 DONE 0.0s
+
+#7 [php internal] load build context
+#7 transferring context: 6.22kB 0.0s done
+#7 DONE 0.0s
+
+#8 [php stage-0 2/6] COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+#8 CACHED
+
+#9 [php stage-0 3/6] RUN apt-get update && apt-get install -y --no-install-recommends         libzip-dev     && docker-php-ext-install pdo_mysql zip bcmath     && apt-get clean && rm -rf /var/lib/apt/lists/*
+#9 CACHED
+
+#10 [php stage-0 4/6] WORKDIR /app
+#10 CACHED
+
+#11 [php stage-0 5/6] COPY . .
+#11 DONE 0.1s
+
+#12 [php stage-0 6/6] RUN --mount=type=cache,target=/tmp/composer-cache     composer validate --no-check-publish     && composer install --no-interaction --prefer-dist -vvv     && composer check-platform-reqs
+#12 0.506 ./composer.json is valid
+#12 0.672 Running 2.11.2 (2026-11-10 10:09:37) with PHP 8.4.27 on Linux / 7.0.0-38-generic
+#12 0.702 Reading ./composer.json (/app/composer.json)
+#12 0.705 Loading config file ./composer.json (/app/composer.json)
+#12 0.710 Checked CA file /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem does not exist or it is not a file.
+#12 0.710 Checked directory /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem does not exist or it is not a directory.
+#12 0.710 Checked CA file /etc/pki/tls/certs/ca-bundle.crt does not exist or it is not a file.
+#12 0.710 Checked directory /etc/pki/tls/certs/ca-bundle.crt does not exist or it is not a directory.
+#12 0.714 Checked CA file /etc/ssl/certs/ca-certificates.crt: valid
+#12 0.745 Executing command (CWD): 'git' '--version'
+#12 0.754 Executing command (/app): 'git' 'branch' '-a' '--no-color' '--no-abbrev' '-v'
+#12 0.756 Executing command (/app): 'git' 'describe' '--exact-match' '--tags'
+#12 0.758 Executing command (/app): 'git' 'rev-list' '--format=%H' '-n1' 'HEAD'
+#12 0.760 Executing command (/app): 'hg' 'branch'
+#12 0.761 Executing command (/app): 'fossil' 'branch' 'list'
+#12 0.763 Executing command (/app): 'fossil' 'tag' 'list'
+#12 0.766 Executing command (/app): 'svn' 'info' '--xml'
+#12 0.802 Failed to initialize global composer: Composer could not find the config file: /root/.composer/composer.json
+#12 0.802 
+#12 0.809 Reading ./composer.lock (/app/composer.lock)
+#12 0.825 Installing dependencies from lock file (including require-dev)
+#12 0.849 Verifying lock file contents can be installed on current platform.
+#12 0.858 Reading ./composer.lock (/app/composer.lock)
+#12 0.888 Built pool in 0.0077838897705078s
+#12 0.888 Running filter list pool filter.
+#12 0.892 Downloading https://repo.packagist.org/packages.json
+#12 1.129 [200] https://repo.packagist.org/packages.json
+#12 1.132 Writing /tmp/composer-cache/repo/https---repo.packagist.org/packages.json into cache
+#12 1.135 Downloading https://repo.packagist.org/lists/all/summary.json
+#12 1.190 [200] https://repo.packagist.org/lists/all/summary.json
+#12 1.190 Writing /tmp/composer-cache/repo/https---repo.packagist.org/filter-summary.json into cache
+#12 1.194 Generating rules
+#12 1.210 Resolving dependencies through SAT
+#12 1.211 Looking at all rules.
+#12 1.212 
+#12 1.212 Dependency resolution completed in 0.001 seconds
+#12 1.229 Package operations: 113 installs, 0 updates, 0 removals
+#12 1.229 Installs: doctrine/inflector:2.1.1, doctrine/lexer:3.0.3, dragonmantank/cron-expression:v3.6.1, symfony/deprecation-contracts:v3.7.1, psr/container:2.0.2, fakerphp/faker:v1.24.1, symfony/polyfill-mbstring:v1.43.3, symfony/http-foundation:v7.4.22, fruitcake/php-cors:v1.4.0, symfony/polyfill-php80:v1.43.0, psr/http-message:2.0, psr/http-client:1.0.3, ralouphie/getallheaders:3.0.3, psr/http-factory:1.1.0, guzzlehttp/psr7:2.13.2, guzzlehttp/promises:2.6.0, guzzlehttp/guzzle:7.16.1, guzzlehttp/uri-template:v1.0.11, symfony/polyfill-intl-normalizer:v1.43.0, symfony/polyfill-intl-grapheme:v1.43.3, symfony/polyfill-ctype:v1.37.0, symfony/string:v7.4.22, symfony/service-contracts:v3.7.3, symfony/console:v7.4.22, nunomaduro/termwind:v2.4.0, voku/portable-ascii:2.1.1, phpoption/phpoption:1.10.0, graham-campbell/result-type:v1.2.0, vlucas/phpdotenv:v5.8.0, symfony/css-selector:v7.4.22, tijsverkoyen/css-to-inline-styles:v2.4.0, symfony/var-dumper:v7.4.22, symfony/polyfill-uuid:v1.43.0, symfony/uid:v7.4.21, symfony/routing:v7.4.22, symfony/process:v7.4.22, symfony/polyfill-php85:v1.43.0, symfony/polyfill-php84:v1.43.0, symfony/polyfill-php83:v1.43.0, symfony/polyfill-intl-idn:v1.43.0, symfony/mime:v7.4.22, psr/event-dispatcher:1.0.0, symfony/event-dispatcher-contracts:v3.7.1, symfony/event-dispatcher:v7.4.17, psr/log:3.0.2, egulias/email-validator:4.0.4, symfony/mailer:v7.4.22, symfony/error-handler:v7.4.22, symfony/http-kernel:v7.4.22, symfony/finder:v7.4.22, ramsey/collection:2.1.1, brick/math:0.14.8, ramsey/uuid:4.9.4, psr/simple-cache:3.0.0, symfony/translation-contracts:v3.7.1, symfony/translation:v7.4.22, symfony/polyfill-time:v1.42.0, psr/clock:1.0.0, symfony/clock:v7.4.21, carbonphp/carbon-doctrine-types:3.2.1, nesbot/carbon:3.15.1, monolog/monolog:3.12.1, league/uri-interfaces:7.9.1, league/uri:7.9.1, league/mime-type-detection:1.17.0, league/flysystem-local:3.35.3, league/flysystem:3.36.0, nette/utils:v4.1.6, nette/schema:v1.4.0, dflydev/dot-access-data:v3.0.3, league/config:v1.2.0, league/commonmark:2.10.7, laravel/serializable-closure:v2.1.0, laravel/prompts:v0.3.26, laravel/framework:v12.71.0, laravel/pail:v1.2.7, laravel/pint:v1.32.1, symfony/yaml:v7.4.22, laravel/sail:v1.69.0, laravel/sanctum:v4.3.3, nikic/php-parser:v5.9.0, psy/psysh:v0.12.24, laravel/tinker:v2.11.1, hamcrest/hamcrest-php:v3.0.0, mockery/mockery:1.6.15, filp/whoops:2.19.1, nunomaduro/collision:v8.9.5, staabm/side-effects-detector:1.0.5, sebastian/version:5.0.2, sebastian/type:5.1.3, sebastian/recursion-context:6.0.3, sebastian/object-reflector:4.0.1, sebastian/object-enumerator:6.0.1, sebastian/global-state:7.0.2, sebastian/exporter:6.3.2, sebastian/environment:7.2.1, sebastian/diff:6.0.2, sebastian/comparator:6.3.3, sebastian/code-unit:3.0.3, sebastian/cli-parser:3.0.2, phpunit/php-timer:7.0.1, phpunit/php-text-template:4.0.1, phpunit/php-invoker:5.0.1, phpunit/php-file-iterator:5.1.1, theseer/tokenizer:1.3.1, sebastian/lines-of-code:3.0.1, sebastian/complexity:4.0.1, sebastian/code-unit-reverse-lookup:4.0.1, phpunit/php-code-coverage:11.0.12, phar-io/version:3.2.1, phar-io/manifest:2.0.4, myclabs/deep-copy:1.14.0, phpunit/phpunit:11.5.57
+#12 1.238 As there is no 'unzip' nor '7z' command installed zip files are being unpacked using the PHP zip extension.
+#12 1.238 This may cause invalid reports of corrupted archives. Besides, any UNIX permissions (e.g. executable) defined in the archives will be lost.
+#12 1.238 Installing 'unzip' or '7z' (21.01+) may remediate them.
+#12 1.240   - Downloading doctrine/inflector (2.1.1)
+#12 1.241 Downloading https://api.github.com/repos/doctrine/inflector/zipball/46351b6812b7b6d52b82c3efa5dfb786a198ec88
+#12 1.242   - Downloading doctrine/lexer (3.0.3)
+#12 1.242 Downloading https://api.github.com/repos/doctrine/lexer/zipball/71d305eaa6480d3d3460c7d053d1da7749fa9cca
+#12 1.244   - Downloading dragonmantank/cron-expression (v3.6.1)
+#12 1.244   - Downloading symfony/deprecation-contracts (v3.7.1)
+#12 1.245   - Downloading psr/container (2.0.2)
+#12 1.246   - Downloading fakerphp/faker (v1.24.1)
+#12 1.247   - Downloading symfony/polyfill-mbstring (v1.43.3)
+#12 1.248   - Downloading symfony/http-foundation (v7.4.22)
+#12 1.249   - Downloading fruitcake/php-cors (v1.4.0)
+#12 1.251   - Downloading symfony/polyfill-php80 (v1.43.0)
+#12 1.252   - Downloading psr/http-message (2.0)
+#12 1.254   - Downloading psr/http-client (1.0.3)
+#12 1.254   - Downloading ralouphie/getallheaders (3.0.3)
+#12 1.255   - Downloading psr/http-factory (1.1.0)
+#12 1.256   - Downloading guzzlehttp/psr7 (2.13.2)
+#12 1.256   - Downloading guzzlehttp/promises (2.6.0)
+#12 1.257   - Downloading guzzlehttp/guzzle (7.16.1)
+#12 1.259   - Downloading guzzlehttp/uri-template (v1.0.11)
+#12 1.260   - Downloading symfony/polyfill-intl-normalizer (v1.43.0)
+#12 1.261   - Downloading symfony/polyfill-intl-grapheme (v1.43.3)
+#12 1.262   - Downloading symfony/polyfill-ctype (v1.37.0)
+#12 1.263   - Downloading symfony/string (v7.4.22)
+#12 1.263   - Downloading symfony/service-contracts (v3.7.3)
+#12 1.264   - Downloading symfony/console (v7.4.22)
+#12 1.265   - Downloading nunomaduro/termwind (v2.4.0)
+#12 1.267   - Downloading voku/portable-ascii (2.1.1)
+#12 1.268   - Downloading phpoption/phpoption (1.10.0)
+#12 1.269   - Downloading graham-campbell/result-type (v1.2.0)
+#12 1.271   - Downloading vlucas/phpdotenv (v5.8.0)
+#12 1.272   - Downloading symfony/css-selector (v7.4.22)
+#12 1.273   - Downloading tijsverkoyen/css-to-inline-styles (v2.4.0)
+#12 1.273   - Downloading symfony/var-dumper (v7.4.22)
+#12 1.274   - Downloading symfony/polyfill-uuid (v1.43.0)
+#12 1.275   - Downloading symfony/uid (v7.4.21)
+#12 1.276   - Downloading symfony/routing (v7.4.22)
+#12 1.277   - Downloading symfony/process (v7.4.22)
+#12 1.278   - Downloading symfony/polyfill-php85 (v1.43.0)
+#12 1.279   - Downloading symfony/polyfill-php84 (v1.43.0)
+#12 1.280   - Downloading symfony/polyfill-php83 (v1.43.0)
+#12 1.281   - Downloading symfony/polyfill-intl-idn (v1.43.0)
+#12 1.281   - Downloading symfony/mime (v7.4.22)
+#12 1.282   - Downloading psr/event-dispatcher (1.0.0)
+#12 1.286   - Downloading symfony/event-dispatcher-contracts (v3.7.1)
+#12 1.288   - Downloading symfony/event-dispatcher (v7.4.17)
+#12 1.288   - Downloading psr/log (3.0.2)
+#12 1.288   - Downloading egulias/email-validator (4.0.4)
+#12 1.290   - Downloading symfony/mailer (v7.4.22)
+#12 1.290   - Downloading symfony/error-handler (v7.4.22)
+#12 1.291   - Downloading symfony/http-kernel (v7.4.22)
+#12 1.292   - Downloading symfony/finder (v7.4.22)
+#12 1.294   - Downloading ramsey/collection (2.1.1)
+#12 1.295   - Downloading brick/math (0.14.8)
+#12 1.295   - Downloading ramsey/uuid (4.9.4)
+#12 1.296   - Downloading psr/simple-cache (3.0.0)
+#12 1.297   - Downloading symfony/translation-contracts (v3.7.1)
+#12 1.298   - Downloading symfony/translation (v7.4.22)
+#12 1.299   - Downloading symfony/polyfill-time (v1.42.0)
+#12 1.300   - Downloading psr/clock (1.0.0)
+#12 1.301   - Downloading symfony/clock (v7.4.21)
+#12 1.302   - Downloading carbonphp/carbon-doctrine-types (3.2.1)
+#12 1.303   - Downloading nesbot/carbon (3.15.1)
+#12 1.304   - Downloading monolog/monolog (3.12.1)
+#12 1.305   - Downloading league/uri-interfaces (7.9.1)
+#12 1.306   - Downloading league/uri (7.9.1)
+#12 1.307   - Downloading league/mime-type-detection (1.17.0)
+#12 1.308   - Downloading league/flysystem-local (3.35.3)
+#12 1.309   - Downloading league/flysystem (3.36.0)
+#12 1.310   - Downloading nette/utils (v4.1.6)
+#12 1.310   - Downloading nette/schema (v1.4.0)
+#12 1.311   - Downloading dflydev/dot-access-data (v3.0.3)
+#12 1.312   - Downloading league/config (v1.2.0)
+#12 1.313   - Downloading league/commonmark (2.10.7)
+#12 1.314   - Downloading laravel/serializable-closure (v2.1.0)
+#12 1.315   - Downloading laravel/prompts (v0.3.26)
+#12 1.316   - Downloading laravel/framework (v12.71.0)
+#12 1.317   - Downloading laravel/pail (v1.2.7)
+#12 1.318   - Downloading laravel/pint (v1.32.1)
+#12 1.319   - Downloading symfony/yaml (v7.4.22)
+#12 1.319   - Downloading laravel/sail (v1.69.0)
+#12 1.320   - Downloading laravel/sanctum (v4.3.3)
+#12 1.322   - Downloading nikic/php-parser (v5.9.0)
+#12 1.323   - Downloading psy/psysh (v0.12.24)
+#12 1.324   - Downloading laravel/tinker (v2.11.1)
+#12 1.325   - Downloading hamcrest/hamcrest-php (v3.0.0)
+#12 1.326   - Downloading mockery/mockery (1.6.15)
+#12 1.327   - Downloading filp/whoops (2.19.1)
+#12 1.328   - Downloading nunomaduro/collision (v8.9.5)
+#12 1.329   - Downloading staabm/side-effects-detector (1.0.5)
+#12 1.331   - Downloading sebastian/version (5.0.2)
+#12 1.331   - Downloading sebastian/type (5.1.3)
+#12 1.332   - Downloading sebastian/recursion-context (6.0.3)
+#12 1.332   - Downloading sebastian/object-reflector (4.0.1)
+#12 1.333   - Downloading sebastian/object-enumerator (6.0.1)
+#12 1.334   - Downloading sebastian/global-state (7.0.2)
+#12 1.335   - Downloading sebastian/exporter (6.3.2)
+#12 1.336   - Downloading sebastian/environment (7.2.1)
+#12 1.337   - Downloading sebastian/diff (6.0.2)
+#12 1.337   - Downloading sebastian/comparator (6.3.3)
+#12 1.338   - Downloading sebastian/code-unit (3.0.3)
+#12 1.339   - Downloading sebastian/cli-parser (3.0.2)
+#12 1.340   - Downloading phpunit/php-timer (7.0.1)
+#12 1.341   - Downloading phpunit/php-text-template (4.0.1)
+#12 1.343   - Downloading phpunit/php-invoker (5.0.1)
+#12 1.343   - Downloading phpunit/php-file-iterator (5.1.1)
+#12 1.344   - Downloading theseer/tokenizer (1.3.1)
+#12 1.345   - Downloading sebastian/lines-of-code (3.0.1)
+#12 1.346   - Downloading sebastian/complexity (4.0.1)
+#12 1.347   - Downloading sebastian/code-unit-reverse-lookup (4.0.1)
+#12 1.348   - Downloading phpunit/php-code-coverage (11.0.12)
+#12 1.349   - Downloading phar-io/version (3.2.1)
+#12 1.350   - Downloading phar-io/manifest (2.0.4)
+#12 1.352   - Downloading myclabs/deep-copy (1.14.0)
+#12 1.353   - Downloading phpunit/phpunit (11.5.57)
+#12 1.607 [302] https://api.github.com/repos/doctrine/lexer/zipball/71d305eaa6480d3d3460c7d053d1da7749fa9cca
+#12 1.608 Following redirect (1) https://codeload.github.com/doctrine/lexer/legacy.zip/71d305eaa6480d3d3460c7d053d1da7749fa9cca
+#12 2.000 [302] https://api.github.com/repos/doctrine/inflector/zipball/46351b6812b7b6d52b82c3efa5dfb786a198ec88
+#12 2.001 Following redirect (1) https://codeload.github.com/doctrine/inflector/legacy.zip/46351b6812b7b6d52b82c3efa5dfb786a198ec88
+#12 2.176 [200] https://codeload.github.com/doctrine/lexer/legacy.zip/71d305eaa6480d3d3460c7d053d1da7749fa9cca
+#12 2.178 Writing /tmp/composer-cache/files/doctrine/lexer/5c127a7bb93254b1e6002d7256adfdf211faf20d.zip into cache from /app/vendor/composer/tmp-07099daf98254c45b4a881183cc80c32.zip
+#12 2.184 Downloading https://api.github.com/repos/dragonmantank/cron-expression/zipball/4189372ffeff09bf14f731f67a9de90c7b413ebe
+#12 2.258 [200] https://codeload.github.com/doctrine/inflector/legacy.zip/46351b6812b7b6d52b82c3efa5dfb786a198ec88
+#12 2.259 Writing /tmp/composer-cache/files/doctrine/inflector/aa30f7c21a19b14405b743118a48373ac7e0deeb.zip into cache from /app/vendor/composer/tmp-ea7d6ba93e7f45e64c4c875a1ad54575.zip
+#12 2.261 Downloading https://api.github.com/repos/symfony/deprecation-contracts/zipball/f3202fa1b5097b0af062dc978b32ecf63404e31d
+#12 2.328 [302] https://api.github.com/repos/dragonmantank/cron-expression/zipball/4189372ffeff09bf14f731f67a9de90c7b413ebe
+#12 2.328 Following redirect (1) https://codeload.github.com/dragonmantank/cron-expression/legacy.zip/4189372ffeff09bf14f731f67a9de90c7b413ebe
+#12 2.511 [302] https://api.github.com/repos/symfony/deprecation-contracts/zipball/f3202fa1b5097b0af062dc978b32ecf63404e31d
+#12 2.511 Following redirect (1) https://codeload.github.com/symfony/deprecation-contracts/legacy.zip/f3202fa1b5097b0af062dc978b32ecf63404e31d
+#12 2.699 [200] https://codeload.github.com/dragonmantank/cron-expression/legacy.zip/4189372ffeff09bf14f731f67a9de90c7b413ebe
+#12 2.700 Writing /tmp/composer-cache/files/dragonmantank/cron-expression/b6c9fdf58b1baceae1565498a95b416d3eb97a60.zip into cache from /app/vendor/composer/tmp-121eb964529a5d5fc0fcc597b6f565d2.zip
+#12 2.703 Downloading https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963
+#12 2.757 [200] https://codeload.github.com/symfony/deprecation-contracts/legacy.zip/f3202fa1b5097b0af062dc978b32ecf63404e31d
+#12 2.758 Writing /tmp/composer-cache/files/symfony/deprecation-contracts/4b38c947e19afd276ca4427b06df9c85c6876740.zip into cache from /app/vendor/composer/tmp-1a2bc4baee042e0d4e77d09aec24e9ef.zip
+#12 2.759 Downloading https://api.github.com/repos/FakerPHP/Faker/zipball/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5
+#12 2.821 [302] https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963
+#12 2.821 Following redirect (1) https://codeload.github.com/php-fig/container/legacy.zip/c71ecc56dfe541dbd90c5360474fbc405f8d5963
+#12 3.007 [302] https://api.github.com/repos/FakerPHP/Faker/zipball/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5
+#12 3.007 Following redirect (1) https://codeload.github.com/FakerPHP/Faker/legacy.zip/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5
+#12 3.204 [200] https://codeload.github.com/php-fig/container/legacy.zip/c71ecc56dfe541dbd90c5360474fbc405f8d5963
+#12 3.205 Writing /tmp/composer-cache/files/psr/container/a0a43e15cb16e3ab95a991e1bffc813474b15cdf.zip into cache from /app/vendor/composer/tmp-0aea93db258e5e9aae5fdcccb3e73197.zip
+#12 3.206 Downloading https://api.github.com/repos/symfony/polyfill-mbstring/zipball/122889ed24dc000165bcbfd77ec412f15cbdfc6a
+#12 3.378 [302] https://api.github.com/repos/symfony/polyfill-mbstring/zipball/122889ed24dc000165bcbfd77ec412f15cbdfc6a
+#12 3.379 Following redirect (1) https://codeload.github.com/symfony/polyfill-mbstring/legacy.zip/122889ed24dc000165bcbfd77ec412f15cbdfc6a
+#12 3.900 [200] https://codeload.github.com/symfony/polyfill-mbstring/legacy.zip/122889ed24dc000165bcbfd77ec412f15cbdfc6a
+#12 3.901 Writing /tmp/composer-cache/files/symfony/polyfill-mbstring/307fed1ddb3e184b178e1f8a7450018b179059e5.zip into cache from /app/vendor/composer/tmp-a80169697a4cbfab8259e94835ee7640.zip
+#12 3.903 Downloading https://api.github.com/repos/symfony/http-foundation/zipball/63eda1d0c4de229d6b3e825709e49dd5c149699a
+#12 4.246 [302] https://api.github.com/repos/symfony/http-foundation/zipball/63eda1d0c4de229d6b3e825709e49dd5c149699a
+#12 4.246 Following redirect (1) https://codeload.github.com/symfony/http-foundation/legacy.zip/63eda1d0c4de229d6b3e825709e49dd5c149699a
+#12 4.543 [200] https://codeload.github.com/FakerPHP/Faker/legacy.zip/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5
+#12 4.543 Writing /tmp/composer-cache/files/fakerphp/faker/cd3ee3e52b771fb0718af48c0ecde2cd7f473bdc.zip into cache from /app/vendor/composer/tmp-d4eb6f99201de9330f120dd7c6d6d961.zip
+#12 4.556 Downloading https://api.github.com/repos/fruitcake/php-cors/zipball/38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379
+#12 4.630 [200] https://codeload.github.com/symfony/http-foundation/legacy.zip/63eda1d0c4de229d6b3e825709e49dd5c149699a
+#12 4.630 Writing /tmp/composer-cache/files/symfony/http-foundation/7291c543a9d5d29216c6d485495a27b4886601fc.zip into cache from /app/vendor/composer/tmp-61310b1c7e39276916cc567f050d79c7.zip
+#12 4.631 [302] https://api.github.com/repos/fruitcake/php-cors/zipball/38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379
+#12 4.631 Following redirect (1) https://codeload.github.com/fruitcake/php-cors/legacy.zip/38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379
+#12 4.634 Downloading https://api.github.com/repos/symfony/polyfill-php80/zipball/9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74
+#12 4.830 [302] https://api.github.com/repos/symfony/polyfill-php80/zipball/9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74
+#12 4.830 Following redirect (1) https://codeload.github.com/symfony/polyfill-php80/legacy.zip/9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74
+#12 5.015 [200] https://codeload.github.com/fruitcake/php-cors/legacy.zip/38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379
+#12 5.017 Writing /tmp/composer-cache/files/fruitcake/php-cors/1158044facb9562b3a6cfc303879b660296f1c0c.zip into cache from /app/vendor/composer/tmp-3e5bd8670fd475373695ed28f3ac1a23.zip
+#12 5.018 Downloading https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71
+#12 5.069 [200] https://codeload.github.com/symfony/polyfill-php80/legacy.zip/9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74
+#12 5.073 Writing /tmp/composer-cache/files/symfony/polyfill-php80/e30ed318ed7c5be0022b215830d79f5333a7c271.zip into cache from /app/vendor/composer/tmp-758fc595efc08d12b496333b09b4b5ad.zip
+#12 5.075 Downloading https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90
+#12 5.125 [302] https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71
+#12 5.125 Following redirect (1) https://codeload.github.com/php-fig/http-message/legacy.zip/402d35bcb92c70c026d1a6a9883f06b2ead23d71
+#12 5.290 [302] https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90
+#12 5.290 Following redirect (1) https://codeload.github.com/php-fig/http-client/legacy.zip/bb5906edc1c324c9a05aa0873d40117941e5fa90
+#12 5.481 [200] https://codeload.github.com/php-fig/http-message/legacy.zip/402d35bcb92c70c026d1a6a9883f06b2ead23d71
+#12 5.483 Writing /tmp/composer-cache/files/psr/http-message/e8baaf1c5537971c6192d7c56974d81e2ee099c3.zip into cache from /app/vendor/composer/tmp-94921f46a49bc3ca9552af8d891de36b.zip
+#12 5.485 Downloading https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822
+#12 5.555 [200] https://codeload.github.com/php-fig/http-client/legacy.zip/bb5906edc1c324c9a05aa0873d40117941e5fa90
+#12 5.556 Writing /tmp/composer-cache/files/psr/http-client/8a0eb9bbf4ceddbff9fd328c582c07269c8888ab.zip into cache from /app/vendor/composer/tmp-a3b2f73530b202eb4f72f2d94d8b297c.zip
+#12 5.558 Downloading https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a
+#12 5.627 [302] https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822
+#12 5.627 Following redirect (1) https://codeload.github.com/ralouphie/getallheaders/legacy.zip/120b605dfeb996808c31b6477290a714d356e822
+#12 5.808 [302] https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a
+#12 5.808 Following redirect (1) https://codeload.github.com/php-fig/http-factory/legacy.zip/2b4765fddfe3b508ac62f829e852b1501d3f6e8a
+#12 5.995 [200] https://codeload.github.com/ralouphie/getallheaders/legacy.zip/120b605dfeb996808c31b6477290a714d356e822
+#12 5.997 Writing /tmp/composer-cache/files/ralouphie/getallheaders/ddc5f4c7ab3d868f5060717336a0d93475d53175.zip into cache from /app/vendor/composer/tmp-943add67e5520ba1f8a71fdfa3602eec.zip
+#12 6.000 Downloading https://api.github.com/repos/guzzle/psr7/zipball/adee536f95101929f262b8c59e8a61472f347d58
+#12 6.066 [200] https://codeload.github.com/php-fig/http-factory/legacy.zip/2b4765fddfe3b508ac62f829e852b1501d3f6e8a
+#12 6.067 Writing /tmp/composer-cache/files/psr/http-factory/3dbec50111f2c1bcf13231bd100d8985d4495287.zip into cache from /app/vendor/composer/tmp-76a3d6b1b557776990d720060a766b4a.zip
+#12 6.068 Downloading https://api.github.com/repos/guzzle/promises/zipball/3d88c829bd5f13d13847b39067dbf09a60af2154
+#12 6.127 [302] https://api.github.com/repos/guzzle/psr7/zipball/adee536f95101929f262b8c59e8a61472f347d58
+#12 6.127 Following redirect (1) https://codeload.github.com/guzzle/psr7/legacy.zip/adee536f95101929f262b8c59e8a61472f347d58
+#12 6.326 [302] https://api.github.com/repos/guzzle/promises/zipball/3d88c829bd5f13d13847b39067dbf09a60af2154
+#12 6.326 Following redirect (1) https://codeload.github.com/guzzle/promises/legacy.zip/3d88c829bd5f13d13847b39067dbf09a60af2154
+#12 6.520 [200] https://codeload.github.com/guzzle/psr7/legacy.zip/adee536f95101929f262b8c59e8a61472f347d58
+#12 6.521 Writing /tmp/composer-cache/files/guzzlehttp/psr7/4e05aa42166303362634d2907b430aab7641a66d.zip into cache from /app/vendor/composer/tmp-9e301f1edc294090da1d6794fd29d7a2.zip
+#12 6.525 Downloading https://api.github.com/repos/guzzle/guzzle/zipball/81755d989b3007ca7f88a069857553cd08e7dc2e
+#12 6.587 [200] https://codeload.github.com/guzzle/promises/legacy.zip/3d88c829bd5f13d13847b39067dbf09a60af2154
+#12 6.588 Writing /tmp/composer-cache/files/guzzlehttp/promises/7e84b8f1bbae57b52e124f9c702fd276ad89132e.zip into cache from /app/vendor/composer/tmp-17012f58ab057baf8fb419aa494b837a.zip
+#12 6.589 Downloading https://api.github.com/repos/guzzle/uri-template/zipball/d0058dccf4299d70c3d9da3378b8908b32780368
+#12 6.669 [302] https://api.github.com/repos/guzzle/guzzle/zipball/81755d989b3007ca7f88a069857553cd08e7dc2e
+#12 6.669 Following redirect (1) https://codeload.github.com/guzzle/guzzle/legacy.zip/81755d989b3007ca7f88a069857553cd08e7dc2e
+#12 6.847 [302] https://api.github.com/repos/guzzle/uri-template/zipball/d0058dccf4299d70c3d9da3378b8908b32780368
+#12 6.847 Following redirect (1) https://codeload.github.com/guzzle/uri-template/legacy.zip/d0058dccf4299d70c3d9da3378b8908b32780368
+#12 7.031 [200] https://codeload.github.com/guzzle/guzzle/legacy.zip/81755d989b3007ca7f88a069857553cd08e7dc2e
+#12 7.031 Writing /tmp/composer-cache/files/guzzlehttp/guzzle/6edda838a52580a37e1dda8ea0b7c4e877c6aade.zip into cache from /app/vendor/composer/tmp-64c2e6b4282067373e099766433040aa.zip
+#12 7.033 Downloading https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/ebd57ccc7edb93d632e184efbe7693d2517bab3b
+#12 7.106 [200] https://codeload.github.com/guzzle/uri-template/legacy.zip/d0058dccf4299d70c3d9da3378b8908b32780368
+#12 7.107 Writing /tmp/composer-cache/files/guzzlehttp/uri-template/08685674c672353cb33d62b180bd2a35c1f9c9a3.zip into cache from /app/vendor/composer/tmp-4f8a97b0925c4a32f02b8e2e3cda56a7.zip
+#12 7.109 Downloading https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/5a8f33c87aeecffce24e721b5064fab05f4becf8
+#12 7.429 [302] https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/ebd57ccc7edb93d632e184efbe7693d2517bab3b
+#12 7.429 Following redirect (1) https://codeload.github.com/symfony/polyfill-intl-normalizer/legacy.zip/ebd57ccc7edb93d632e184efbe7693d2517bab3b
+#12 7.627 [302] https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/5a8f33c87aeecffce24e721b5064fab05f4becf8
+#12 7.627 Following redirect (1) https://codeload.github.com/symfony/polyfill-intl-grapheme/legacy.zip/5a8f33c87aeecffce24e721b5064fab05f4becf8
+#12 7.827 [200] https://codeload.github.com/symfony/polyfill-intl-normalizer/legacy.zip/ebd57ccc7edb93d632e184efbe7693d2517bab3b
+#12 7.828 Writing /tmp/composer-cache/files/symfony/polyfill-intl-normalizer/ecfc114933d92dd97142e3ea44dfcafd0684c0da.zip into cache from /app/vendor/composer/tmp-1c059a7f9becf9186efdc75583059a38.zip
+#12 7.832 Downloading https://api.github.com/repos/symfony/polyfill-ctype/zipball/141046a8f9477948ff284fa65be2095baafb94f2
+#12 7.906 [200] https://codeload.github.com/symfony/polyfill-intl-grapheme/legacy.zip/5a8f33c87aeecffce24e721b5064fab05f4becf8
+#12 7.908 Writing /tmp/composer-cache/files/symfony/polyfill-intl-grapheme/c5edbb4dc45305ad4b7853059d130331fcb57b7c.zip into cache from /app/vendor/composer/tmp-f71f9a14c9833a8c75f3ede500ac5c0e.zip
+#12 7.909 Downloading https://api.github.com/repos/symfony/string/zipball/8dff7da3a56638f1d189c5368183294102de4ced
+#12 8.186 [302] https://api.github.com/repos/symfony/polyfill-ctype/zipball/141046a8f9477948ff284fa65be2095baafb94f2
+#12 8.186 Following redirect (1) https://codeload.github.com/symfony/polyfill-ctype/legacy.zip/141046a8f9477948ff284fa65be2095baafb94f2
+#12 8.387 [302] https://api.github.com/repos/symfony/string/zipball/8dff7da3a56638f1d189c5368183294102de4ced
+#12 8.387 Following redirect (1) https://codeload.github.com/symfony/string/legacy.zip/8dff7da3a56638f1d189c5368183294102de4ced
+#12 8.604 [200] https://codeload.github.com/symfony/polyfill-ctype/legacy.zip/141046a8f9477948ff284fa65be2095baafb94f2
+#12 8.605 Writing /tmp/composer-cache/files/symfony/polyfill-ctype/073aefdee0b8090e5fd5ba584972967d92c8a9f4.zip into cache from /app/vendor/composer/tmp-dbcb416cc4305bdb1879362aa3f984ad.zip
+#12 8.606 Downloading https://api.github.com/repos/symfony/service-contracts/zipball/15e6a07ec2a2c75ceb1b21dd98105ee8456d2257
+#12 8.683 [200] https://codeload.github.com/symfony/string/legacy.zip/8dff7da3a56638f1d189c5368183294102de4ced
+#12 8.684 Writing /tmp/composer-cache/files/symfony/string/56d8b0b8595797b15441c84d7bf670ea5a8e719f.zip into cache from /app/vendor/composer/tmp-1d949bbb3816bdd3fa1860d8e8606ef2.zip
+#12 8.685 Downloading https://api.github.com/repos/symfony/console/zipball/8012f842110b414fd1cc641adb0ed8423353b0bb
+#12 9.068 [302] https://api.github.com/repos/symfony/service-contracts/zipball/15e6a07ec2a2c75ceb1b21dd98105ee8456d2257
+#12 9.068 Following redirect (1) https://codeload.github.com/symfony/service-contracts/legacy.zip/15e6a07ec2a2c75ceb1b21dd98105ee8456d2257
+#12 9.282 [302] https://api.github.com/repos/symfony/console/zipball/8012f842110b414fd1cc641adb0ed8423353b0bb
+#12 9.282 Following redirect (1) https://codeload.github.com/symfony/console/legacy.zip/8012f842110b414fd1cc641adb0ed8423353b0bb
+#12 9.543 [200] https://codeload.github.com/symfony/service-contracts/legacy.zip/15e6a07ec2a2c75ceb1b21dd98105ee8456d2257
+#12 9.544 Writing /tmp/composer-cache/files/symfony/service-contracts/c6a7d178d170bbb533db58498ed82da9b2563d6d.zip into cache from /app/vendor/composer/tmp-bca7ef28125432e9e178c5924091ea40.zip
+#12 9.546 Downloading https://api.github.com/repos/nunomaduro/termwind/zipball/712a31b768f5daea284c2169a7d227031001b9a8
+#12 9.848 [200] https://codeload.github.com/symfony/console/legacy.zip/8012f842110b414fd1cc641adb0ed8423353b0bb
+#12 9.850 Writing /tmp/composer-cache/files/symfony/console/09c79a5bcb4dfdfc51ba67c718859109b320a5d6.zip into cache from /app/vendor/composer/tmp-c6e7ed4289b4525b0a63192cf891f478.zip
+#12 9.853 Downloading https://api.github.com/repos/voku/portable-ascii/zipball/8e1051fe39379367aecf014f41744ce7539a856f
+#12 9.939 [302] https://api.github.com/repos/nunomaduro/termwind/zipball/712a31b768f5daea284c2169a7d227031001b9a8
+#12 9.939 Following redirect (1) https://codeload.github.com/nunomaduro/termwind/legacy.zip/712a31b768f5daea284c2169a7d227031001b9a8
+#12 10.11 [302] https://api.github.com/repos/voku/portable-ascii/zipball/8e1051fe39379367aecf014f41744ce7539a856f
+#12 10.11 Following redirect (1) https://codeload.github.com/voku/portable-ascii/legacy.zip/8e1051fe39379367aecf014f41744ce7539a856f
+#12 10.30 [200] https://codeload.github.com/nunomaduro/termwind/legacy.zip/712a31b768f5daea284c2169a7d227031001b9a8
+#12 10.30 Writing /tmp/composer-cache/files/nunomaduro/termwind/4a2a023672cce6e15816f8b17ea60f7d291a9df4.zip into cache from /app/vendor/composer/tmp-aa5e8f08dfe306d6a5c3dc61117277ab.zip
+#12 10.31 Downloading https://api.github.com/repos/schmittjoh/php-option/zipball/67b192b6a42ec03944b972d6e633ddec78ad2c6d
+#12 10.41 [200] https://codeload.github.com/voku/portable-ascii/legacy.zip/8e1051fe39379367aecf014f41744ce7539a856f
+#12 10.42 Writing /tmp/composer-cache/files/voku/portable-ascii/41fd2954d353b6f48d93c10949acc40e9fa187b2.zip into cache from /app/vendor/composer/tmp-ad6fde80590fa27f269d6848b0ea56b5.zip
+#12 10.42 Downloading https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/adccca3324eece92ca35463648c12b9e6293c05b
+#12 10.51 [302] https://api.github.com/repos/schmittjoh/php-option/zipball/67b192b6a42ec03944b972d6e633ddec78ad2c6d
+#12 10.51 Following redirect (1) https://codeload.github.com/schmittjoh/php-option/legacy.zip/67b192b6a42ec03944b972d6e633ddec78ad2c6d
+#12 10.69 [302] https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/adccca3324eece92ca35463648c12b9e6293c05b
+#12 10.69 Following redirect (1) https://codeload.github.com/GrahamCampbell/Result-Type/legacy.zip/adccca3324eece92ca35463648c12b9e6293c05b
+#12 10.90 [200] https://codeload.github.com/schmittjoh/php-option/legacy.zip/67b192b6a42ec03944b972d6e633ddec78ad2c6d
+#12 10.90 Writing /tmp/composer-cache/files/phpoption/phpoption/ab123b0e11c829cb0d12a29dfe571324ca85ab10.zip into cache from /app/vendor/composer/tmp-331b8fc9be2d1766eebda5287cb3f6e0.zip
+#12 10.90 Downloading https://api.github.com/repos/phpdotenv/phpdotenv/zipball/96149103e62ac67e915f6d2ef59b72dee2e011e0
+#12 11.24 [200] https://codeload.github.com/GrahamCampbell/Result-Type/legacy.zip/adccca3324eece92ca35463648c12b9e6293c05b
+#12 11.24 Writing /tmp/composer-cache/files/graham-campbell/result-type/ce48912bdd26c1bbdea9b29d8aba81460773e36b.zip into cache from /app/vendor/composer/tmp-8a8ab5f98678d720c40bcc31bf51f491.zip
+#12 11.24 Downloading https://api.github.com/repos/symfony/css-selector/zipball/4cdbb4a575111d771791339a9d5231155918f699
+#12 11.57 [302] https://api.github.com/repos/phpdotenv/phpdotenv/zipball/96149103e62ac67e915f6d2ef59b72dee2e011e0
+#12 11.57 Following redirect (1) https://codeload.github.com/phpdotenv/phpdotenv/legacy.zip/96149103e62ac67e915f6d2ef59b72dee2e011e0
+#12 11.75 [302] https://api.github.com/repos/symfony/css-selector/zipball/4cdbb4a575111d771791339a9d5231155918f699
+#12 11.75 Following redirect (1) https://codeload.github.com/symfony/css-selector/legacy.zip/4cdbb4a575111d771791339a9d5231155918f699
+#12 12.00 [200] https://codeload.github.com/phpdotenv/phpdotenv/legacy.zip/96149103e62ac67e915f6d2ef59b72dee2e011e0
+#12 12.01 Writing /tmp/composer-cache/files/vlucas/phpdotenv/64a75e5426a60a11d541b69c676e472d99f940c3.zip into cache from /app/vendor/composer/tmp-ecd3a0b069cd2f098fb3fdb65708e9a9.zip
+#12 12.01 Downloading https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/f0292ccf0ec75843d65027214426b6b163b48b41
+#12 12.10 [200] https://codeload.github.com/symfony/css-selector/legacy.zip/4cdbb4a575111d771791339a9d5231155918f699
+#12 12.10 Writing /tmp/composer-cache/files/symfony/css-selector/97cd37cc0b5c6880cee364875599f3ef80f0a178.zip into cache from /app/vendor/composer/tmp-38c4f6a5874e9d1662b901064325dad4.zip
+#12 12.10 Downloading https://api.github.com/repos/symfony/var-dumper/zipball/6e6ff33ea8cf5df27f00a5561ebd5ee9bd7f1618
+#12 12.47 [302] https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/f0292ccf0ec75843d65027214426b6b163b48b41
+#12 12.47 Following redirect (1) https://codeload.github.com/tijsverkoyen/CssToInlineStyles/legacy.zip/f0292ccf0ec75843d65027214426b6b163b48b41
+#12 12.67 [302] https://api.github.com/repos/symfony/var-dumper/zipball/6e6ff33ea8cf5df27f00a5561ebd5ee9bd7f1618
+#12 12.67 Following redirect (1) https://codeload.github.com/symfony/var-dumper/legacy.zip/6e6ff33ea8cf5df27f00a5561ebd5ee9bd7f1618
+#12 12.89 [200] https://codeload.github.com/tijsverkoyen/CssToInlineStyles/legacy.zip/f0292ccf0ec75843d65027214426b6b163b48b41
+#12 12.89 Writing /tmp/composer-cache/files/tijsverkoyen/css-to-inline-styles/491a0c1ac48e787202723cfde4e1dbf3b17c78ec.zip into cache from /app/vendor/composer/tmp-352f44abb2399f8b34d95cbadb9cdb4c.zip
+#12 12.89 Downloading https://api.github.com/repos/symfony/polyfill-uuid/zipball/b23ff8245cc5c4479ea2be3d0132d2e6dd433993
+#12 12.98 [200] https://codeload.github.com/symfony/var-dumper/legacy.zip/6e6ff33ea8cf5df27f00a5561ebd5ee9bd7f1618
+#12 12.99 Writing /tmp/composer-cache/files/symfony/var-dumper/4d7c5c130b26c9eb652f54fbf792c3e0a99195df.zip into cache from /app/vendor/composer/tmp-f400a024922a56d347cca9f09ca5a827.zip
+#12 12.99 [302] https://api.github.com/repos/symfony/polyfill-uuid/zipball/b23ff8245cc5c4479ea2be3d0132d2e6dd433993
+#12 12.99 Following redirect (1) https://codeload.github.com/symfony/polyfill-uuid/legacy.zip/b23ff8245cc5c4479ea2be3d0132d2e6dd433993
+#12 12.99 Downloading https://api.github.com/repos/symfony/uid/zipball/3e706a245b5343ea93be9cafe84525bfb54e60fc
+#12 13.32 [200] https://codeload.github.com/symfony/polyfill-uuid/legacy.zip/b23ff8245cc5c4479ea2be3d0132d2e6dd433993
+#12 13.32 Writing /tmp/composer-cache/files/symfony/polyfill-uuid/f80fb98f571638bf8a6e90b06b4fe372a456544c.zip into cache from /app/vendor/composer/tmp-c25e5b8d5ba65e922d08b1bffbd29b92.zip
+#12 13.32 Downloading https://api.github.com/repos/symfony/routing/zipball/f79ed6fbf60d9e32d358054f1915295f3b8a6f7a
+#12 13.61 [302] https://api.github.com/repos/symfony/uid/zipball/3e706a245b5343ea93be9cafe84525bfb54e60fc
+#12 13.62 Following redirect (1) https://codeload.github.com/symfony/uid/legacy.zip/3e706a245b5343ea93be9cafe84525bfb54e60fc
+#12 13.79 [302] https://api.github.com/repos/symfony/routing/zipball/f79ed6fbf60d9e32d358054f1915295f3b8a6f7a
+#12 13.79 Following redirect (1) https://codeload.github.com/symfony/routing/legacy.zip/f79ed6fbf60d9e32d358054f1915295f3b8a6f7a
+#12 13.99 [200] https://codeload.github.com/symfony/uid/legacy.zip/3e706a245b5343ea93be9cafe84525bfb54e60fc
+#12 13.99 Writing /tmp/composer-cache/files/symfony/uid/c73eadec0713645491547927f69f16353ce9df26.zip into cache from /app/vendor/composer/tmp-04f188467d4561a9e035bff894812fba.zip
+#12 13.99 Downloading https://api.github.com/repos/symfony/process/zipball/a5a6912edbbfc4c98cd080bc4bbe37c8e7eeb20a
+#12 14.27 [200] https://codeload.github.com/symfony/routing/legacy.zip/f79ed6fbf60d9e32d358054f1915295f3b8a6f7a
+#12 14.27 Writing /tmp/composer-cache/files/symfony/routing/f97c81c7fb3c8af21727be731c4c19cf20fc221b.zip into cache from /app/vendor/composer/tmp-dd9fba109ffa3f6357aea8993a590fb3.zip
+#12 14.27 Downloading https://api.github.com/repos/symfony/polyfill-php85/zipball/86a42cbcc07adc331481a5ab310a4024bfc227f6
+#12 14.59 [302] https://api.github.com/repos/symfony/process/zipball/a5a6912edbbfc4c98cd080bc4bbe37c8e7eeb20a
+#12 14.59 Following redirect (1) https://codeload.github.com/symfony/process/legacy.zip/a5a6912edbbfc4c98cd080bc4bbe37c8e7eeb20a
+#12 14.85 [302] https://api.github.com/repos/symfony/polyfill-php85/zipball/86a42cbcc07adc331481a5ab310a4024bfc227f6
+#12 14.85 Following redirect (1) https://codeload.github.com/symfony/polyfill-php85/legacy.zip/86a42cbcc07adc331481a5ab310a4024bfc227f6
+#12 15.05 [200] https://codeload.github.com/symfony/process/legacy.zip/a5a6912edbbfc4c98cd080bc4bbe37c8e7eeb20a
+#12 15.05 Writing /tmp/composer-cache/files/symfony/process/5aa074332c9e21bcde3bc62956c0c4ebb566a97d.zip into cache from /app/vendor/composer/tmp-62e0729b3086bc0a39b39ef9a062b138.zip
+#12 15.05 Downloading https://api.github.com/repos/symfony/polyfill-php84/zipball/22c6548499cbe5c5bb072fc0c42312dff062a015
+#12 15.39 [200] https://codeload.github.com/symfony/polyfill-php85/legacy.zip/86a42cbcc07adc331481a5ab310a4024bfc227f6
+#12 15.39 Writing /tmp/composer-cache/files/symfony/polyfill-php85/fef9b9c1e2bb6134489e49854cba1c99149f44eb.zip into cache from /app/vendor/composer/tmp-193712d60fb15c4cf25bd6b76919004f.zip
+#12 15.39 Downloading https://api.github.com/repos/symfony/polyfill-php83/zipball/80ccff923a8d61f73ebe9da0aa94e25232f004ce
+#12 15.46 [302] https://api.github.com/repos/symfony/polyfill-php84/zipball/22c6548499cbe5c5bb072fc0c42312dff062a015
+#12 15.46 Following redirect (1) https://codeload.github.com/symfony/polyfill-php84/legacy.zip/22c6548499cbe5c5bb072fc0c42312dff062a015
+#12 15.65 [302] https://api.github.com/repos/symfony/polyfill-php83/zipball/80ccff923a8d61f73ebe9da0aa94e25232f004ce
+#12 15.65 Following redirect (1) https://codeload.github.com/symfony/polyfill-php83/legacy.zip/80ccff923a8d61f73ebe9da0aa94e25232f004ce
+#12 15.86 [200] https://codeload.github.com/symfony/polyfill-php84/legacy.zip/22c6548499cbe5c5bb072fc0c42312dff062a015
+#12 15.86 Writing /tmp/composer-cache/files/symfony/polyfill-php84/b8cbf9ec9c5ce5b56802e968d29456b080834d9f.zip into cache from /app/vendor/composer/tmp-19273c5832067bb962a0523bff543369.zip
+#12 15.86 Downloading https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/533d68cf99c8f8ee2e8893c59ed59192e92cfd74
+#12 16.16 [200] https://codeload.github.com/symfony/polyfill-php83/legacy.zip/80ccff923a8d61f73ebe9da0aa94e25232f004ce
+#12 16.16 Writing /tmp/composer-cache/files/symfony/polyfill-php83/6fac9c2ec043c73ce0404357fdf7166225ab6251.zip into cache from /app/vendor/composer/tmp-574a532678d67bbeb34fa00079ea540d.zip
+#12 16.16 Downloading https://api.github.com/repos/symfony/mime/zipball/94a4c017435bc515f5ac80421a2c555fb9ca3676
+#12 16.47 [302] https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/533d68cf99c8f8ee2e8893c59ed59192e92cfd74
+#12 16.47 Following redirect (1) https://codeload.github.com/symfony/polyfill-intl-idn/legacy.zip/533d68cf99c8f8ee2e8893c59ed59192e92cfd74
+#12 16.63 [302] https://api.github.com/repos/symfony/mime/zipball/94a4c017435bc515f5ac80421a2c555fb9ca3676
+#12 16.63 Following redirect (1) https://codeload.github.com/symfony/mime/legacy.zip/94a4c017435bc515f5ac80421a2c555fb9ca3676
+#12 16.87 [200] https://codeload.github.com/symfony/polyfill-intl-idn/legacy.zip/533d68cf99c8f8ee2e8893c59ed59192e92cfd74
+#12 16.87 Writing /tmp/composer-cache/files/symfony/polyfill-intl-idn/45017d08b181c280c82b22ee563fc314923dae5c.zip into cache from /app/vendor/composer/tmp-aeb3729005791f61845787b1da07e910.zip
+#12 16.87 Downloading https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0
+#12 16.96 [302] https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0
+#12 16.96 Following redirect (1) https://codeload.github.com/php-fig/event-dispatcher/legacy.zip/dbefd12671e8a14ec7f180cab83036ed26714bb0
+#12 17.12 [200] https://codeload.github.com/symfony/mime/legacy.zip/94a4c017435bc515f5ac80421a2c555fb9ca3676
+#12 17.13 Writing /tmp/composer-cache/files/symfony/mime/8fb042efceed581661ee7a480c31efc5a7cdb535.zip into cache from /app/vendor/composer/tmp-244efac11a878d3ec802a7a125deaf39.zip
+#12 17.13 Downloading https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/c7de7a00ffb67842132da02ea92988a39ccd9f4e
+#12 17.21 [200] https://codeload.github.com/php-fig/event-dispatcher/legacy.zip/dbefd12671e8a14ec7f180cab83036ed26714bb0
+#12 17.21 Writing /tmp/composer-cache/files/psr/event-dispatcher/8f60a8cd1b7ff4e8f9782d70d78dee877a526529.zip into cache from /app/vendor/composer/tmp-00932a21219121a8805836234df72e58.zip
+#12 17.21 Downloading https://api.github.com/repos/symfony/event-dispatcher/zipball/d269974ee93c61d03620ffee358355bfdb471d66
+#12 17.25 [302] https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/c7de7a00ffb67842132da02ea92988a39ccd9f4e
+#12 17.25 Following redirect (1) https://codeload.github.com/symfony/event-dispatcher-contracts/legacy.zip/c7de7a00ffb67842132da02ea92988a39ccd9f4e
+#12 17.45 [302] https://api.github.com/repos/symfony/event-dispatcher/zipball/d269974ee93c61d03620ffee358355bfdb471d66
+#12 17.45 Following redirect (1) https://codeload.github.com/symfony/event-dispatcher/legacy.zip/d269974ee93c61d03620ffee358355bfdb471d66
+#12 17.67 [200] https://codeload.github.com/symfony/event-dispatcher-contracts/legacy.zip/c7de7a00ffb67842132da02ea92988a39ccd9f4e
+#12 17.67 Writing /tmp/composer-cache/files/symfony/event-dispatcher-contracts/f5160938c3a73697560ec0835694ab95143f9035.zip into cache from /app/vendor/composer/tmp-ca1d25582917c6051f90b547617050ea.zip
+#12 17.67 Downloading https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3
+#12 17.77 [200] https://codeload.github.com/symfony/event-dispatcher/legacy.zip/d269974ee93c61d03620ffee358355bfdb471d66
+#12 17.77 Writing /tmp/composer-cache/files/symfony/event-dispatcher/fb0b5ac70ca0fda1447786566100fa9004b54b1b.zip into cache from /app/vendor/composer/tmp-52c329af645ca001f41dcb5d9755180c.zip
+#12 17.77 Downloading https://api.github.com/repos/egulias/EmailValidator/zipball/d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa
+#12 17.82 [302] https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3
+#12 17.82 Following redirect (1) https://codeload.github.com/php-fig/log/legacy.zip/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3
+#12 17.99 [302] https://api.github.com/repos/egulias/EmailValidator/zipball/d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa
+#12 18.00 Following redirect (1) https://codeload.github.com/egulias/EmailValidator/legacy.zip/d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa
+#12 18.17 [200] https://codeload.github.com/php-fig/log/legacy.zip/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3
+#12 18.17 Writing /tmp/composer-cache/files/psr/log/2961e31604f4f4de116b458f772c4aa21861c5b4.zip into cache from /app/vendor/composer/tmp-d2ee9c658d598893913c77ba45889f5b.zip
+#12 18.18 Downloading https://api.github.com/repos/symfony/mailer/zipball/1aa1e2ee7515826bb17b0ad0d2f16962fcaa7859
+#12 18.53 [200] https://codeload.github.com/egulias/EmailValidator/legacy.zip/d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa
+#12 18.53 Writing /tmp/composer-cache/files/egulias/email-validator/2325f9b713443a41bdd9cae876fc640df65c0c85.zip into cache from /app/vendor/composer/tmp-cf9a861d1fbdf3dd286628d61fef7137.zip
+#12 18.53 Downloading https://api.github.com/repos/symfony/error-handler/zipball/545852cfe9c4979c82389155b4d8d05f8864e4f1
+#12 18.85 [302] https://api.github.com/repos/symfony/mailer/zipball/1aa1e2ee7515826bb17b0ad0d2f16962fcaa7859
+#12 18.85 Following redirect (1) https://codeload.github.com/symfony/mailer/legacy.zip/1aa1e2ee7515826bb17b0ad0d2f16962fcaa7859
+#12 19.01 [302] https://api.github.com/repos/symfony/error-handler/zipball/545852cfe9c4979c82389155b4d8d05f8864e4f1
+#12 19.01 Following redirect (1) https://codeload.github.com/symfony/error-handler/legacy.zip/545852cfe9c4979c82389155b4d8d05f8864e4f1
+#12 19.20 [200] https://codeload.github.com/symfony/mailer/legacy.zip/1aa1e2ee7515826bb17b0ad0d2f16962fcaa7859
+#12 19.20 Writing /tmp/composer-cache/files/symfony/mailer/6e31f0c564a4e510ff70237e907cdfd29d5f2681.zip into cache from /app/vendor/composer/tmp-35142d7db5cd6aaff5e4df64c471df76.zip
+#12 19.20 Downloading https://api.github.com/repos/symfony/http-kernel/zipball/87e727b33983238d3f2ea50f9f62265499ca1a6d
+#12 19.48 [200] https://codeload.github.com/symfony/error-handler/legacy.zip/545852cfe9c4979c82389155b4d8d05f8864e4f1
+#12 19.48 Writing /tmp/composer-cache/files/symfony/error-handler/c62726e730d6dd09024613b28197ebac288dfbae.zip into cache from /app/vendor/composer/tmp-3741a00e0e14bf6c64a0e2a4bf0c0908.zip
+#12 19.49 Downloading https://api.github.com/repos/symfony/finder/zipball/e13420a8e0a76bdde1e7be09f923e62ad13739f2
+#12 19.83 [302] https://api.github.com/repos/symfony/http-kernel/zipball/87e727b33983238d3f2ea50f9f62265499ca1a6d
+#12 19.83 Following redirect (1) https://codeload.github.com/symfony/http-kernel/legacy.zip/87e727b33983238d3f2ea50f9f62265499ca1a6d
+#12 20.00 [302] https://api.github.com/repos/symfony/finder/zipball/e13420a8e0a76bdde1e7be09f923e62ad13739f2
+#12 20.00 Following redirect (1) https://codeload.github.com/symfony/finder/legacy.zip/e13420a8e0a76bdde1e7be09f923e62ad13739f2
+#12 20.20 [200] https://codeload.github.com/symfony/http-kernel/legacy.zip/87e727b33983238d3f2ea50f9f62265499ca1a6d
+#12 20.20 Writing /tmp/composer-cache/files/symfony/http-kernel/d128fbac631ff141f5cda2d8f5b44e3ed0ddac80.zip into cache from /app/vendor/composer/tmp-b5d342f31ebe9751616cd3ffe38de8fd.zip
+#12 20.21 Downloading https://api.github.com/repos/ramsey/collection/zipball/344572933ad0181accbf4ba763e85a0306a8c5e2
+#12 20.27 [200] https://codeload.github.com/symfony/finder/legacy.zip/e13420a8e0a76bdde1e7be09f923e62ad13739f2
+#12 20.27 Writing /tmp/composer-cache/files/symfony/finder/cd5c9f741a577ff49909ced6a9ddf97cc34840e3.zip into cache from /app/vendor/composer/tmp-2f4e805eca8734b17bd04a092cc26819.zip
+#12 20.27 Downloading https://api.github.com/repos/brick/math/zipball/63422359a44b7f06cae63c3b429b59e8efcc0629
+#12 20.33 [302] https://api.github.com/repos/ramsey/collection/zipball/344572933ad0181accbf4ba763e85a0306a8c5e2
+#12 20.33 Following redirect (1) https://codeload.github.com/ramsey/collection/legacy.zip/344572933ad0181accbf4ba763e85a0306a8c5e2
+#12 20.51 [302] https://api.github.com/repos/brick/math/zipball/63422359a44b7f06cae63c3b429b59e8efcc0629
+#12 20.51 Following redirect (1) https://codeload.github.com/brick/math/legacy.zip/63422359a44b7f06cae63c3b429b59e8efcc0629
+#12 20.70 [200] https://codeload.github.com/ramsey/collection/legacy.zip/344572933ad0181accbf4ba763e85a0306a8c5e2
+#12 20.70 Writing /tmp/composer-cache/files/ramsey/collection/435c62c1e67306fd98f8f2041369a0e33486e402.zip into cache from /app/vendor/composer/tmp-dfade63dbc3ad5b4e40daf295f857808.zip
+#12 20.70 Downloading https://api.github.com/repos/ramsey/uuid/zipball/75d73f48d02797c2c285a7e9f348fadc0102ffe2
+#12 20.76 [200] https://codeload.github.com/brick/math/legacy.zip/63422359a44b7f06cae63c3b429b59e8efcc0629
+#12 20.76 Writing /tmp/composer-cache/files/brick/math/70dbe0b7b01787da692e4559a06c0361518d9437.zip into cache from /app/vendor/composer/tmp-2cce91a08e4c0a9661f035eaf4f6f3e2.zip
+#12 20.76 Downloading https://api.github.com/repos/php-fig/simple-cache/zipball/764e0b3939f5ca87cb904f570ef9be2d78a07865
+#12 20.82 [302] https://api.github.com/repos/ramsey/uuid/zipball/75d73f48d02797c2c285a7e9f348fadc0102ffe2
+#12 20.82 Following redirect (1) https://codeload.github.com/ramsey/uuid/legacy.zip/75d73f48d02797c2c285a7e9f348fadc0102ffe2
+#12 21.03 [302] https://api.github.com/repos/php-fig/simple-cache/zipball/764e0b3939f5ca87cb904f570ef9be2d78a07865
+#12 21.03 Following redirect (1) https://codeload.github.com/php-fig/simple-cache/legacy.zip/764e0b3939f5ca87cb904f570ef9be2d78a07865
+#12 21.22 [200] https://codeload.github.com/ramsey/uuid/legacy.zip/75d73f48d02797c2c285a7e9f348fadc0102ffe2
+#12 21.22 Writing /tmp/composer-cache/files/ramsey/uuid/cdd7f2b9824c0d07ceddc27fe340cdfdc168cc5e.zip into cache from /app/vendor/composer/tmp-092d9dc2c6508bce8b8d024a77a11d40.zip
+#12 21.22 Downloading https://api.github.com/repos/symfony/translation-contracts/zipball/ccb206b98faccc511ebae8e5fad50f2dc0b30621
+#12 21.27 [200] https://codeload.github.com/php-fig/simple-cache/legacy.zip/764e0b3939f5ca87cb904f570ef9be2d78a07865
+#12 21.27 Writing /tmp/composer-cache/files/psr/simple-cache/f30344b376a5fb0289c0491e8df6aba973ba12aa.zip into cache from /app/vendor/composer/tmp-b6a96245aa08234b3c20c94d98768ea4.zip
+#12 21.27 Downloading https://api.github.com/repos/symfony/translation/zipball/a892cd1807bfaf0a10690359c47fdf95b162ef22
+#12 21.63 [302] https://api.github.com/repos/symfony/translation-contracts/zipball/ccb206b98faccc511ebae8e5fad50f2dc0b30621
+#12 21.63 Following redirect (1) https://codeload.github.com/symfony/translation-contracts/legacy.zip/ccb206b98faccc511ebae8e5fad50f2dc0b30621
+#12 21.83 [302] https://api.github.com/repos/symfony/translation/zipball/a892cd1807bfaf0a10690359c47fdf95b162ef22
+#12 21.83 Following redirect (1) https://codeload.github.com/symfony/translation/legacy.zip/a892cd1807bfaf0a10690359c47fdf95b162ef22
+#12 21.99 [200] https://codeload.github.com/symfony/translation-contracts/legacy.zip/ccb206b98faccc511ebae8e5fad50f2dc0b30621
+#12 21.99 Writing /tmp/composer-cache/files/symfony/translation-contracts/0ff8c3d63d5d983a7b63b53fb8f48a431335b1d1.zip into cache from /app/vendor/composer/tmp-02c5bcff99bb937e03b3ec19dae21daf.zip
+#12 21.99 Downloading https://api.github.com/repos/symfony/polyfill-time/zipball/ac9f1ed802dd58f37e720388130c088434aa09fc
+#12 22.35 [200] https://codeload.github.com/symfony/translation/legacy.zip/a892cd1807bfaf0a10690359c47fdf95b162ef22
+#12 22.36 Writing /tmp/composer-cache/files/symfony/translation/29d9b303ff99ecbd0711372a538d8c1f41b6a399.zip into cache from /app/vendor/composer/tmp-2c0f0922f2765c683f6c3dc4a1aac015.zip
+#12 22.36 Downloading https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d
+#12 22.44 [302] https://api.github.com/repos/symfony/polyfill-time/zipball/ac9f1ed802dd58f37e720388130c088434aa09fc
+#12 22.44 Following redirect (1) https://codeload.github.com/symfony/polyfill-time/legacy.zip/ac9f1ed802dd58f37e720388130c088434aa09fc
+#12 22.67 [302] https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d
+#12 22.67 Following redirect (1) https://codeload.github.com/php-fig/clock/legacy.zip/e41a24703d4560fd0acb709162f73b8adfc3aa0d
+#12 22.97 [200] https://codeload.github.com/symfony/polyfill-time/legacy.zip/ac9f1ed802dd58f37e720388130c088434aa09fc
+#12 22.97 Writing /tmp/composer-cache/files/symfony/polyfill-time/b0235b355d0ed919e4bf4ba31e9ca466707b5996.zip into cache from /app/vendor/composer/tmp-0ba058793707e526d3eb0c521c08e0fa.zip
+#12 22.97 Downloading https://api.github.com/repos/symfony/clock/zipball/07437f612dca89c1894c1db04491002b1e798f03
+#12 23.44 [200] https://codeload.github.com/php-fig/clock/legacy.zip/e41a24703d4560fd0acb709162f73b8adfc3aa0d
+#12 23.44 Writing /tmp/composer-cache/files/psr/clock/82bf02e3a8f1b35169f8d27aa93a171ae387f779.zip into cache from /app/vendor/composer/tmp-6b3f4c2ccc145933a612110b49667559.zip
+#12 23.44 Downloading https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/5fa5eacafd9ef47c8c6ab9143fc901ba0194d3dc
+#12 23.53 [302] https://api.github.com/repos/symfony/clock/zipball/07437f612dca89c1894c1db04491002b1e798f03
+#12 23.53 Following redirect (1) https://codeload.github.com/symfony/clock/legacy.zip/07437f612dca89c1894c1db04491002b1e798f03
+#12 23.84 [302] https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/5fa5eacafd9ef47c8c6ab9143fc901ba0194d3dc
+#12 23.84 Following redirect (1) https://codeload.github.com/CarbonPHP/carbon-doctrine-types/legacy.zip/5fa5eacafd9ef47c8c6ab9143fc901ba0194d3dc
+#12 24.05 [200] https://codeload.github.com/symfony/clock/legacy.zip/07437f612dca89c1894c1db04491002b1e798f03
+#12 24.05 Writing /tmp/composer-cache/files/symfony/clock/acdad096471b49e886b5c6ca17e145c538ca74f0.zip into cache from /app/vendor/composer/tmp-dbb47140ac397620e149e1ee3899781a.zip
+#12 24.06 Downloading https://api.github.com/repos/CarbonPHP/carbon/zipball/ce0e5636fae7d1e99856eb70cae4c719a284aa08
+#12 24.41 [200] https://codeload.github.com/CarbonPHP/carbon-doctrine-types/legacy.zip/5fa5eacafd9ef47c8c6ab9143fc901ba0194d3dc
+#12 24.41 Writing /tmp/composer-cache/files/carbonphp/carbon-doctrine-types/ab55666172a50204092102b2d877500f9bb73b6b.zip into cache from /app/vendor/composer/tmp-a755afbff42923d97f9e211bbd3daa5e.zip
+#12 24.41 Downloading https://api.github.com/repos/Seldaek/monolog/zipball/d7059e4c691d05ea1222b5124bed0f961be46e15
+#12 24.54 [302] https://api.github.com/repos/CarbonPHP/carbon/zipball/ce0e5636fae7d1e99856eb70cae4c719a284aa08
+#12 24.54 Following redirect (1) https://codeload.github.com/CarbonPHP/carbon/legacy.zip/ce0e5636fae7d1e99856eb70cae4c719a284aa08
+#12 24.83 [302] https://api.github.com/repos/Seldaek/monolog/zipball/d7059e4c691d05ea1222b5124bed0f961be46e15
+#12 24.83 Following redirect (1) https://codeload.github.com/Seldaek/monolog/legacy.zip/d7059e4c691d05ea1222b5124bed0f961be46e15
+#12 25.23 [200] https://codeload.github.com/CarbonPHP/carbon/legacy.zip/ce0e5636fae7d1e99856eb70cae4c719a284aa08
+#12 25.23 Writing /tmp/composer-cache/files/nesbot/carbon/cd46627ba5107cd430045e06ebea63246c7e0b38.zip into cache from /app/vendor/composer/tmp-d770d84b577b5216e8c057274733efa9.zip
+#12 25.24 Downloading https://api.github.com/repos/thephpleague/uri-interfaces/zipball/994300a79e17f179112dc259f8df0c4de982f736
+#12 25.60 [200] https://codeload.github.com/Seldaek/monolog/legacy.zip/d7059e4c691d05ea1222b5124bed0f961be46e15
+#12 25.60 Writing /tmp/composer-cache/files/monolog/monolog/13f7456348238a63d970854498776d96f53cdee8.zip into cache from /app/vendor/composer/tmp-80b269740a6b420534872aa4c65270d9.zip
+#12 25.61 Downloading https://api.github.com/repos/thephpleague/uri/zipball/40403f5c3141457a61f7f1aba6706e8fa4a0ece5
+#12 26.03 [302] https://api.github.com/repos/thephpleague/uri-interfaces/zipball/994300a79e17f179112dc259f8df0c4de982f736
+#12 26.03 Following redirect (1) https://codeload.github.com/thephpleague/uri-interfaces/legacy.zip/994300a79e17f179112dc259f8df0c4de982f736
+#12 26.23 [302] https://api.github.com/repos/thephpleague/uri/zipball/40403f5c3141457a61f7f1aba6706e8fa4a0ece5
+#12 26.23 Following redirect (1) https://codeload.github.com/thephpleague/uri/legacy.zip/40403f5c3141457a61f7f1aba6706e8fa4a0ece5
+#12 26.45 [200] https://codeload.github.com/thephpleague/uri-interfaces/legacy.zip/994300a79e17f179112dc259f8df0c4de982f736
+#12 26.45 Writing /tmp/composer-cache/files/league/uri-interfaces/86f8a643a679fada4042a084d3b0852b029b9a94.zip into cache from /app/vendor/composer/tmp-6c0ef654f8f7269b7d0d75504f9ad374.zip
+#12 26.45 Downloading https://api.github.com/repos/thephpleague/mime-type-detection/zipball/f5f47eff7c48ed1003069a2ca67f316fb4021c76
+#12 26.60 [200] https://codeload.github.com/thephpleague/uri/legacy.zip/40403f5c3141457a61f7f1aba6706e8fa4a0ece5
+#12 26.60 Writing /tmp/composer-cache/files/league/uri/5adb61b023d83fad4bf3da18794a6314d3b24197.zip into cache from /app/vendor/composer/tmp-45f11912058a8e3f1d773983d4569831.zip
+#12 26.60 Downloading https://api.github.com/repos/thephpleague/flysystem-local/zipball/a099b24dce160f3b2239043d13d47c4a1a214ea4
+#12 26.67 [302] https://api.github.com/repos/thephpleague/mime-type-detection/zipball/f5f47eff7c48ed1003069a2ca67f316fb4021c76
+#12 26.67 Following redirect (1) https://codeload.github.com/thephpleague/mime-type-detection/legacy.zip/f5f47eff7c48ed1003069a2ca67f316fb4021c76
+#12 26.88 [302] https://api.github.com/repos/thephpleague/flysystem-local/zipball/a099b24dce160f3b2239043d13d47c4a1a214ea4
+#12 26.89 Following redirect (1) https://codeload.github.com/thephpleague/flysystem-local/legacy.zip/a099b24dce160f3b2239043d13d47c4a1a214ea4
+#12 27.08 [200] https://codeload.github.com/thephpleague/mime-type-detection/legacy.zip/f5f47eff7c48ed1003069a2ca67f316fb4021c76
+#12 27.08 Writing /tmp/composer-cache/files/league/mime-type-detection/40ae65d1314b40f3509e5b35badbc7ab92466d63.zip into cache from /app/vendor/composer/tmp-2f0a2d3c22266884a78f03522dac6ed7.zip
+#12 27.08 Downloading https://api.github.com/repos/thephpleague/flysystem/zipball/f7fb152932f30072d573510cbd4dd657d6475b25
+#12 27.15 [200] https://codeload.github.com/thephpleague/flysystem-local/legacy.zip/a099b24dce160f3b2239043d13d47c4a1a214ea4
+#12 27.15 Writing /tmp/composer-cache/files/league/flysystem-local/69934308b6e2e346264a60e1e26200aac0932413.zip into cache from /app/vendor/composer/tmp-80e138e1d502a431fe1ab0b54d261e30.zip
+#12 27.15 Downloading https://api.github.com/repos/nette/utils/zipball/6bf24518accf32cf845bca305e0b92078700fd01
+#12 27.22 [302] https://api.github.com/repos/thephpleague/flysystem/zipball/f7fb152932f30072d573510cbd4dd657d6475b25
+#12 27.22 Following redirect (1) https://codeload.github.com/thephpleague/flysystem/legacy.zip/f7fb152932f30072d573510cbd4dd657d6475b25
+#12 27.39 [302] https://api.github.com/repos/nette/utils/zipball/6bf24518accf32cf845bca305e0b92078700fd01
+#12 27.39 Following redirect (1) https://codeload.github.com/nette/utils/legacy.zip/6bf24518accf32cf845bca305e0b92078700fd01
+#12 27.58 [200] https://codeload.github.com/thephpleague/flysystem/legacy.zip/f7fb152932f30072d573510cbd4dd657d6475b25
+#12 27.58 Writing /tmp/composer-cache/files/league/flysystem/62e4150041ec61f93c7cbc8220524a3797ee311e.zip into cache from /app/vendor/composer/tmp-ab0598eb7e01f078e208c2a2486e1222.zip
+#12 27.58 Downloading https://api.github.com/repos/nette/schema/zipball/af9fa8a86bfca9b02b10346220db26e62ef942ec
+#12 27.89 [200] https://codeload.github.com/nette/utils/legacy.zip/6bf24518accf32cf845bca305e0b92078700fd01
+#12 27.89 Writing /tmp/composer-cache/files/nette/utils/a7c35ba14c9070c4c72a5c4d74d6c8d67876ffd2.zip into cache from /app/vendor/composer/tmp-c542c22f6e5a3a8fecca5346404d9ab6.zip
+#12 27.89 Downloading https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/a23a2bf4f31d3518f3ecb38660c95715dfead60f
+#12 27.94 [302] https://api.github.com/repos/nette/schema/zipball/af9fa8a86bfca9b02b10346220db26e62ef942ec
+#12 27.94 Following redirect (1) https://codeload.github.com/nette/schema/legacy.zip/af9fa8a86bfca9b02b10346220db26e62ef942ec
+#12 28.12 [302] https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/a23a2bf4f31d3518f3ecb38660c95715dfead60f
+#12 28.12 Following redirect (1) https://codeload.github.com/dflydev/dflydev-dot-access-data/legacy.zip/a23a2bf4f31d3518f3ecb38660c95715dfead60f
+#12 28.33 [200] https://codeload.github.com/nette/schema/legacy.zip/af9fa8a86bfca9b02b10346220db26e62ef942ec
+#12 28.33 Writing /tmp/composer-cache/files/nette/schema/e0c6ad70d5dc830ebd92cbfbca3f249cb23c1984.zip into cache from /app/vendor/composer/tmp-2126416c083a2348b4fc9468042c1b3f.zip
+#12 28.34 Downloading https://api.github.com/repos/thephpleague/config/zipball/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3
+#12 28.55 [200] https://codeload.github.com/dflydev/dflydev-dot-access-data/legacy.zip/a23a2bf4f31d3518f3ecb38660c95715dfead60f
+#12 28.55 Writing /tmp/composer-cache/files/dflydev/dot-access-data/8e9712a1156060a9ec9f7b0065af4d53d0cda750.zip into cache from /app/vendor/composer/tmp-6d67d8648e38b84c16ee6b37e67f4ec2.zip
+#12 28.55 Downloading https://api.github.com/repos/thephpleague/commonmark/zipball/8eb53e906fd60c67038d22f1f1cab420ed58b8be
+#12 28.96 [302] https://api.github.com/repos/thephpleague/config/zipball/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3
+#12 28.96 Following redirect (1) https://codeload.github.com/thephpleague/config/legacy.zip/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3
+#12 29.16 [302] https://api.github.com/repos/thephpleague/commonmark/zipball/8eb53e906fd60c67038d22f1f1cab420ed58b8be
+#12 29.16 Following redirect (1) https://codeload.github.com/thephpleague/commonmark/legacy.zip/8eb53e906fd60c67038d22f1f1cab420ed58b8be
+#12 29.34 [200] https://codeload.github.com/thephpleague/config/legacy.zip/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3
+#12 29.35 Writing /tmp/composer-cache/files/league/config/63acc0c0da84dd8710b3a4e58a6a4e393530da19.zip into cache from /app/vendor/composer/tmp-35ea543f97d34ddf9af40bab9c482c01.zip
+#12 29.35 Downloading https://api.github.com/repos/laravel/serializable-closure/zipball/2d5869a838bbcf37e0d8b0568fc41914e81374b5
+#12 29.66 [200] https://codeload.github.com/thephpleague/commonmark/legacy.zip/8eb53e906fd60c67038d22f1f1cab420ed58b8be
+#12 29.67 Writing /tmp/composer-cache/files/league/commonmark/733c7028ca9554162e9e8e704c59f60a5302d7cb.zip into cache from /app/vendor/composer/tmp-afb39740c6f846340915d35663617a4e.zip
+#12 29.67 Downloading https://api.github.com/repos/laravel/prompts/zipball/2d1e9bf6bab8d3f383c254db7f2b4ea8816d55e0
+#12 30.03 [302] https://api.github.com/repos/laravel/serializable-closure/zipball/2d5869a838bbcf37e0d8b0568fc41914e81374b5
+#12 30.03 Following redirect (1) https://codeload.github.com/laravel/serializable-closure/legacy.zip/2d5869a838bbcf37e0d8b0568fc41914e81374b5
+#12 30.20 [302] https://api.github.com/repos/laravel/prompts/zipball/2d1e9bf6bab8d3f383c254db7f2b4ea8816d55e0
+#12 30.20 Following redirect (1) https://codeload.github.com/laravel/prompts/legacy.zip/2d1e9bf6bab8d3f383c254db7f2b4ea8816d55e0
+#12 30.40 [200] https://codeload.github.com/laravel/serializable-closure/legacy.zip/2d5869a838bbcf37e0d8b0568fc41914e81374b5
+#12 30.40 Writing /tmp/composer-cache/files/laravel/serializable-closure/9a33119f1ab500e9fc8cbf98b6807bc670da57e5.zip into cache from /app/vendor/composer/tmp-e1d3d950551f19c488efab7d8bf4a147.zip
+#12 30.41 Downloading https://api.github.com/repos/laravel/framework/zipball/64dc24f5d965add4d402b4b8b64f59b561112af5
+#12 30.75 [200] https://codeload.github.com/laravel/prompts/legacy.zip/2d1e9bf6bab8d3f383c254db7f2b4ea8816d55e0
+#12 30.75 Writing /tmp/composer-cache/files/laravel/prompts/390d29937a0a5aeeef4382e8b32bb4c1607a994e.zip into cache from /app/vendor/composer/tmp-ce0704e42351e58eddb8d5f22b37d3b4.zip
+#12 30.75 Downloading https://api.github.com/repos/laravel/pail/zipball/2f7d27dada8effc48b8c424445a69cca7007daaa
+#12 31.08 [302] https://api.github.com/repos/laravel/framework/zipball/64dc24f5d965add4d402b4b8b64f59b561112af5
+#12 31.08 Following redirect (1) https://codeload.github.com/laravel/framework/legacy.zip/64dc24f5d965add4d402b4b8b64f59b561112af5
+#12 31.25 [302] https://api.github.com/repos/laravel/pail/zipball/2f7d27dada8effc48b8c424445a69cca7007daaa
+#12 31.25 Following redirect (1) https://codeload.github.com/laravel/pail/legacy.zip/2f7d27dada8effc48b8c424445a69cca7007daaa
+#12 32.03 [200] https://codeload.github.com/laravel/pail/legacy.zip/2f7d27dada8effc48b8c424445a69cca7007daaa
+#12 32.03 Writing /tmp/composer-cache/files/laravel/pail/157403fa211b2e9ff0d1f5b6001bcb9326fe085d.zip into cache from /app/vendor/composer/tmp-7bbcd5da587ef7e4cb576ce78411efa1.zip
+#12 32.03 Downloading https://api.github.com/repos/laravel/pint/zipball/006bd7825eb01daf92959d060b89cd9514fe4253
+#12 32.34 [200] https://codeload.github.com/laravel/framework/legacy.zip/64dc24f5d965add4d402b4b8b64f59b561112af5
+#12 32.34 Writing /tmp/composer-cache/files/laravel/framework/48f8d85bf6c2f673fa3a176429835e5e63e493b2.zip into cache from /app/vendor/composer/tmp-cac05ffa71e4a62e2186f32552113a81.zip
+#12 32.35 Downloading https://api.github.com/repos/symfony/yaml/zipball/1ed6afa13d48c579c51cbf32e38f50686313497b
+#12 32.41 [302] https://api.github.com/repos/laravel/pint/zipball/006bd7825eb01daf92959d060b89cd9514fe4253
+#12 32.41 Following redirect (1) https://codeload.github.com/laravel/pint/legacy.zip/006bd7825eb01daf92959d060b89cd9514fe4253
+#12 32.92 [302] https://api.github.com/repos/symfony/yaml/zipball/1ed6afa13d48c579c51cbf32e38f50686313497b
+#12 32.92 Following redirect (1) https://codeload.github.com/symfony/yaml/legacy.zip/1ed6afa13d48c579c51cbf32e38f50686313497b
+#12 33.76 [200] https://codeload.github.com/symfony/yaml/legacy.zip/1ed6afa13d48c579c51cbf32e38f50686313497b
+#12 33.76 Writing /tmp/composer-cache/files/symfony/yaml/eba2310bc2ce1dccddeac67fac79fc1dd671737e.zip into cache from /app/vendor/composer/tmp-adfae87e88a673d613f676a70d4d3f49.zip
+#12 33.76 Downloading https://api.github.com/repos/laravel/sail/zipball/3587ac9d68e8f2eaf36bd9fb003a4555861dca9d
+#12 34.04 [200] https://codeload.github.com/laravel/pint/legacy.zip/006bd7825eb01daf92959d060b89cd9514fe4253
+#12 34.04 Writing /tmp/composer-cache/files/laravel/pint/fff0077f84ba8f9b8c637dc054d0e2f607140055.zip into cache from /app/vendor/composer/tmp-b307d8944c047ccf8eb5775fa372b059.zip
+#12 34.05 Downloading https://api.github.com/repos/laravel/sanctum/zipball/fee27a573d1a013af3721d86153a65e0b11927e6
+#12 34.38 [302] https://api.github.com/repos/laravel/sail/zipball/3587ac9d68e8f2eaf36bd9fb003a4555861dca9d
+#12 34.38 Following redirect (1) https://codeload.github.com/laravel/sail/legacy.zip/3587ac9d68e8f2eaf36bd9fb003a4555861dca9d
+#12 34.54 [302] https://api.github.com/repos/laravel/sanctum/zipball/fee27a573d1a013af3721d86153a65e0b11927e6
+#12 34.54 Following redirect (1) https://codeload.github.com/laravel/sanctum/legacy.zip/fee27a573d1a013af3721d86153a65e0b11927e6
+#12 34.73 [200] https://codeload.github.com/laravel/sail/legacy.zip/3587ac9d68e8f2eaf36bd9fb003a4555861dca9d
+#12 34.73 Writing /tmp/composer-cache/files/laravel/sail/839248f1908819909e4e2f5d43aaece208385d07.zip into cache from /app/vendor/composer/tmp-6ebed5f753badfa9974ca368714d177a.zip
+#12 34.73 Downloading https://api.github.com/repos/nikic/PHP-Parser/zipball/9e33da9553fe7786f0962b35f4e4ecf01be89def
+#12 35.08 [200] https://codeload.github.com/laravel/sanctum/legacy.zip/fee27a573d1a013af3721d86153a65e0b11927e6
+#12 35.08 Writing /tmp/composer-cache/files/laravel/sanctum/8fff1bb24f2ec9d6551e8f92480ddc1e4ba3a257.zip into cache from /app/vendor/composer/tmp-346f812dc02f231961a5560514b44330.zip
+#12 35.08 Downloading https://api.github.com/repos/bobthecow/psysh/zipball/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1
+#12 35.14 [302] https://api.github.com/repos/nikic/PHP-Parser/zipball/9e33da9553fe7786f0962b35f4e4ecf01be89def
+#12 35.14 Following redirect (1) https://codeload.github.com/nikic/PHP-Parser/legacy.zip/9e33da9553fe7786f0962b35f4e4ecf01be89def
+#12 35.31 [302] https://api.github.com/repos/bobthecow/psysh/zipball/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1
+#12 35.31 Following redirect (1) https://codeload.github.com/bobthecow/psysh/legacy.zip/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1
+#12 35.47 [200] https://codeload.github.com/nikic/PHP-Parser/legacy.zip/9e33da9553fe7786f0962b35f4e4ecf01be89def
+#12 35.47 Writing /tmp/composer-cache/files/nikic/php-parser/1f04cdb8b266832987c12f93ca05b7948db43442.zip into cache from /app/vendor/composer/tmp-52384041d30830e2668469a399628899.zip
+#12 35.48 Downloading https://api.github.com/repos/laravel/tinker/zipball/c9f80cc835649b5c1842898fb043f8cc098dd741
+#12 35.54 [302] https://api.github.com/repos/laravel/tinker/zipball/c9f80cc835649b5c1842898fb043f8cc098dd741
+#12 35.54 Following redirect (1) https://codeload.github.com/laravel/tinker/legacy.zip/c9f80cc835649b5c1842898fb043f8cc098dd741
+#12 35.99 [200] https://codeload.github.com/bobthecow/psysh/legacy.zip/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1
+#12 35.99 Writing /tmp/composer-cache/files/psy/psysh/4808b957ccd63485e90de228240b10b7e99e095d.zip into cache from /app/vendor/composer/tmp-fd915c17fce8e76a9d13234e8361e6fb.zip
+#12 35.99 Downloading https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b61cd040da1a4925bc90a51c074f5297e7c0fa52
+#12 36.33 [200] https://codeload.github.com/laravel/tinker/legacy.zip/c9f80cc835649b5c1842898fb043f8cc098dd741
+#12 36.34 Writing /tmp/composer-cache/files/laravel/tinker/3e4ead16e03bf9bb79d3eacf4c42dd0f6a8098bc.zip into cache from /app/vendor/composer/tmp-4593f7c56028566e6b8ec7f6fa6a29fa.zip
+#12 36.34 Downloading https://api.github.com/repos/mockery/mockery/zipball/967a801bd188989a5669bd280f252d51c0fdc9ee
+#12 36.67 [302] https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b61cd040da1a4925bc90a51c074f5297e7c0fa52
+#12 36.67 Following redirect (1) https://codeload.github.com/hamcrest/hamcrest-php/legacy.zip/b61cd040da1a4925bc90a51c074f5297e7c0fa52
+#12 36.87 [302] https://api.github.com/repos/mockery/mockery/zipball/967a801bd188989a5669bd280f252d51c0fdc9ee
+#12 36.87 Following redirect (1) https://codeload.github.com/mockery/mockery/legacy.zip/967a801bd188989a5669bd280f252d51c0fdc9ee
+#12 37.07 [200] https://codeload.github.com/hamcrest/hamcrest-php/legacy.zip/b61cd040da1a4925bc90a51c074f5297e7c0fa52
+#12 37.07 Writing /tmp/composer-cache/files/hamcrest/hamcrest-php/63f1b46eab574c41684ea6eb242a6fc15cdfdde2.zip into cache from /app/vendor/composer/tmp-5306c60bdbc37b7628237dbd131d109c.zip
+#12 37.07 Downloading https://api.github.com/repos/filp/whoops/zipball/2915c807d7af61d8fb5c31d90c57af91d30f29fc
+#12 37.41 [200] https://codeload.github.com/mockery/mockery/legacy.zip/967a801bd188989a5669bd280f252d51c0fdc9ee
+#12 37.41 Writing /tmp/composer-cache/files/mockery/mockery/27d3fc75e3b601653dcbde9087df5ba77e3c8110.zip into cache from /app/vendor/composer/tmp-24d93aa645c26981dc8a0a347bebd185.zip
+#12 37.41 Downloading https://api.github.com/repos/nunomaduro/collision/zipball/fb53eacd509a1d303858e2d20cfebf2d630254ec
+#12 37.76 [302] https://api.github.com/repos/filp/whoops/zipball/2915c807d7af61d8fb5c31d90c57af91d30f29fc
+#12 37.76 Following redirect (1) https://codeload.github.com/filp/whoops/legacy.zip/2915c807d7af61d8fb5c31d90c57af91d30f29fc
+#12 37.98 [302] https://api.github.com/repos/nunomaduro/collision/zipball/fb53eacd509a1d303858e2d20cfebf2d630254ec
+#12 37.98 Following redirect (1) https://codeload.github.com/nunomaduro/collision/legacy.zip/fb53eacd509a1d303858e2d20cfebf2d630254ec
+#12 38.20 [200] https://codeload.github.com/filp/whoops/legacy.zip/2915c807d7af61d8fb5c31d90c57af91d30f29fc
+#12 38.20 Writing /tmp/composer-cache/files/filp/whoops/9fc4edcbf81ff538b5a61f05a16c985caa905d9f.zip into cache from /app/vendor/composer/tmp-debf780e83b5710c0a325265e80c82c3.zip
+#12 38.21 Downloading https://api.github.com/repos/staabm/side-effects-detector/zipball/d8334211a140ce329c13726d4a715adbddd0a163
+#12 38.32 [200] https://codeload.github.com/nunomaduro/collision/legacy.zip/fb53eacd509a1d303858e2d20cfebf2d630254ec
+#12 38.32 Writing /tmp/composer-cache/files/nunomaduro/collision/058566f92df70303341533c751976199af825d0c.zip into cache from /app/vendor/composer/tmp-bb08653b7aa25bb094d0003eb6694d0f.zip
+#12 38.32 Downloading https://api.github.com/repos/sebastianbergmann/version/zipball/c687e3387b99f5b03b6caa64c74b63e2936ff874
+#12 38.39 [302] https://api.github.com/repos/staabm/side-effects-detector/zipball/d8334211a140ce329c13726d4a715adbddd0a163
+#12 38.39 Following redirect (1) https://codeload.github.com/staabm/side-effects-detector/legacy.zip/d8334211a140ce329c13726d4a715adbddd0a163
+#12 38.59 [302] https://api.github.com/repos/sebastianbergmann/version/zipball/c687e3387b99f5b03b6caa64c74b63e2936ff874
+#12 38.59 Following redirect (1) https://codeload.github.com/sebastianbergmann/version/legacy.zip/c687e3387b99f5b03b6caa64c74b63e2936ff874
+#12 38.75 [200] https://codeload.github.com/staabm/side-effects-detector/legacy.zip/d8334211a140ce329c13726d4a715adbddd0a163
+#12 38.75 Writing /tmp/composer-cache/files/staabm/side-effects-detector/1bf967123c8eab6ad3b7d10ead807723f1487787.zip into cache from /app/vendor/composer/tmp-d8eb1f6d0c7dc3324d3370a2abc4e0af.zip
+#12 38.76 Downloading https://api.github.com/repos/sebastianbergmann/type/zipball/f77d2d4e78738c98d9a68d2596fe5e8fa380f449
+#12 38.84 [200] https://codeload.github.com/sebastianbergmann/version/legacy.zip/c687e3387b99f5b03b6caa64c74b63e2936ff874
+#12 38.84 Writing /tmp/composer-cache/files/sebastian/version/9ddbebb2770481511eebf896351b698dbecd27a2.zip into cache from /app/vendor/composer/tmp-9ece3d285caf6b4789d8c597615ca547.zip
+#12 38.84 Downloading https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/f6458abbf32a6c8174f8f26261475dc133b3d9dc
+#12 38.92 [302] https://api.github.com/repos/sebastianbergmann/type/zipball/f77d2d4e78738c98d9a68d2596fe5e8fa380f449
+#12 38.92 Following redirect (1) https://codeload.github.com/sebastianbergmann/type/legacy.zip/f77d2d4e78738c98d9a68d2596fe5e8fa380f449
+#12 39.11 [302] https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/f6458abbf32a6c8174f8f26261475dc133b3d9dc
+#12 39.11 Following redirect (1) https://codeload.github.com/sebastianbergmann/recursion-context/legacy.zip/f6458abbf32a6c8174f8f26261475dc133b3d9dc
+#12 39.31 [200] https://codeload.github.com/sebastianbergmann/type/legacy.zip/f77d2d4e78738c98d9a68d2596fe5e8fa380f449
+#12 39.31 Writing /tmp/composer-cache/files/sebastian/type/c6434468ffbe290c2d799c4685a8a43b9eca5810.zip into cache from /app/vendor/composer/tmp-7195a254bd5450068b2c3b73778b0163.zip
+#12 39.31 Downloading https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/6e1a43b411b2ad34146dee7524cb13a068bb35f9
+#12 39.39 [200] https://codeload.github.com/sebastianbergmann/recursion-context/legacy.zip/f6458abbf32a6c8174f8f26261475dc133b3d9dc
+#12 39.40 Writing /tmp/composer-cache/files/sebastian/recursion-context/46e9bd9ce336eb48003f49f17c801f4e9c0041d7.zip into cache from /app/vendor/composer/tmp-acda9007733c3b19e170a9c6589c0b7a.zip
+#12 39.40 Downloading https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/f5b498e631a74204185071eb41f33f38d64608aa
+#12 39.49 [302] https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/6e1a43b411b2ad34146dee7524cb13a068bb35f9
+#12 39.49 Following redirect (1) https://codeload.github.com/sebastianbergmann/object-reflector/legacy.zip/6e1a43b411b2ad34146dee7524cb13a068bb35f9
+#12 39.68 [302] https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/f5b498e631a74204185071eb41f33f38d64608aa
+#12 39.68 Following redirect (1) https://codeload.github.com/sebastianbergmann/object-enumerator/legacy.zip/f5b498e631a74204185071eb41f33f38d64608aa
+#12 39.86 [200] https://codeload.github.com/sebastianbergmann/object-reflector/legacy.zip/6e1a43b411b2ad34146dee7524cb13a068bb35f9
+#12 39.86 Writing /tmp/composer-cache/files/sebastian/object-reflector/b2aeb04d3fb5de6adb035b4a337b85f005260f1e.zip into cache from /app/vendor/composer/tmp-23e0d02efc3eed2cd5afca0288471a9d.zip
+#12 39.86 Downloading https://api.github.com/repos/sebastianbergmann/global-state/zipball/3be331570a721f9a4b5917f4209773de17f747d7
+#12 39.92 [200] https://codeload.github.com/sebastianbergmann/object-enumerator/legacy.zip/f5b498e631a74204185071eb41f33f38d64608aa
+#12 39.92 Writing /tmp/composer-cache/files/sebastian/object-enumerator/73bb37c12489ebeda374915dc48be1b969d6fc08.zip into cache from /app/vendor/composer/tmp-108b19a135fabc06ea877c186e82fd07.zip
+#12 39.93 Downloading https://api.github.com/repos/sebastianbergmann/exporter/zipball/70a298763b40b213ec087c51c739efcaa90bcd74
+#12 40.00 [302] https://api.github.com/repos/sebastianbergmann/global-state/zipball/3be331570a721f9a4b5917f4209773de17f747d7
+#12 40.00 Following redirect (1) https://codeload.github.com/sebastianbergmann/global-state/legacy.zip/3be331570a721f9a4b5917f4209773de17f747d7
+#12 40.18 [302] https://api.github.com/repos/sebastianbergmann/exporter/zipball/70a298763b40b213ec087c51c739efcaa90bcd74
+#12 40.18 Following redirect (1) https://codeload.github.com/sebastianbergmann/exporter/legacy.zip/70a298763b40b213ec087c51c739efcaa90bcd74
+#12 40.36 [200] https://codeload.github.com/sebastianbergmann/global-state/legacy.zip/3be331570a721f9a4b5917f4209773de17f747d7
+#12 40.36 Writing /tmp/composer-cache/files/sebastian/global-state/b54b251ba4c376fe9a45e0fc562f49a74f58ef37.zip into cache from /app/vendor/composer/tmp-3d049d231ce5f5b81bd1abae2d4d976c.zip
+#12 40.36 Downloading https://api.github.com/repos/sebastianbergmann/environment/zipball/a5c75038693ad2e8d4b6c15ba2403532647830c4
+#12 40.41 [200] https://codeload.github.com/sebastianbergmann/exporter/legacy.zip/70a298763b40b213ec087c51c739efcaa90bcd74
+#12 40.41 Writing /tmp/composer-cache/files/sebastian/exporter/ae15d093bd539f8c9df1e68841b0091ef1aefea5.zip into cache from /app/vendor/composer/tmp-8f8d52bfd16abbb724082c374cc9adce.zip
+#12 40.41 Downloading https://api.github.com/repos/sebastianbergmann/diff/zipball/b4ccd857127db5d41a5b676f24b51371d76d8544
+#12 40.46 [302] https://api.github.com/repos/sebastianbergmann/environment/zipball/a5c75038693ad2e8d4b6c15ba2403532647830c4
+#12 40.46 Following redirect (1) https://codeload.github.com/sebastianbergmann/environment/legacy.zip/a5c75038693ad2e8d4b6c15ba2403532647830c4
+#12 40.64 [302] https://api.github.com/repos/sebastianbergmann/diff/zipball/b4ccd857127db5d41a5b676f24b51371d76d8544
+#12 40.64 Following redirect (1) https://codeload.github.com/sebastianbergmann/diff/legacy.zip/b4ccd857127db5d41a5b676f24b51371d76d8544
+#12 40.81 [200] https://codeload.github.com/sebastianbergmann/environment/legacy.zip/a5c75038693ad2e8d4b6c15ba2403532647830c4
+#12 40.81 Writing /tmp/composer-cache/files/sebastian/environment/cf5ab7f5fe47d4e3f2f06963fc54f445437e07b5.zip into cache from /app/vendor/composer/tmp-d473342177019d6aee5a72c2c1cb3628.zip
+#12 40.81 Downloading https://api.github.com/repos/sebastianbergmann/comparator/zipball/2c95e1e86cb8dd41beb8d502057d1081ccc8eca9
+#12 40.90 [200] https://codeload.github.com/sebastianbergmann/diff/legacy.zip/b4ccd857127db5d41a5b676f24b51371d76d8544
+#12 40.90 Writing /tmp/composer-cache/files/sebastian/diff/4d29218c6f97167a77d625595048d51bd7bd6db7.zip into cache from /app/vendor/composer/tmp-324e4ec0030c2068bf33890d1c0f1d30.zip
+#12 40.90 Downloading https://api.github.com/repos/sebastianbergmann/code-unit/zipball/54391c61e4af8078e5b276ab082b6d3c54c9ad64
+#12 40.97 [302] https://api.github.com/repos/sebastianbergmann/comparator/zipball/2c95e1e86cb8dd41beb8d502057d1081ccc8eca9
+#12 40.97 Following redirect (1) https://codeload.github.com/sebastianbergmann/comparator/legacy.zip/2c95e1e86cb8dd41beb8d502057d1081ccc8eca9
+#12 41.17 [302] https://api.github.com/repos/sebastianbergmann/code-unit/zipball/54391c61e4af8078e5b276ab082b6d3c54c9ad64
+#12 41.17 Following redirect (1) https://codeload.github.com/sebastianbergmann/code-unit/legacy.zip/54391c61e4af8078e5b276ab082b6d3c54c9ad64
+#12 41.34 [200] https://codeload.github.com/sebastianbergmann/comparator/legacy.zip/2c95e1e86cb8dd41beb8d502057d1081ccc8eca9
+#12 41.35 Writing /tmp/composer-cache/files/sebastian/comparator/cbe10657e101ada0c28206e919bec9a38f848d8d.zip into cache from /app/vendor/composer/tmp-acb11d394a10984dd6b954284ccaea95.zip
+#12 41.35 Downloading https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/15c5dd40dc4f38794d383bb95465193f5e0ae180
+#12 41.41 [200] https://codeload.github.com/sebastianbergmann/code-unit/legacy.zip/54391c61e4af8078e5b276ab082b6d3c54c9ad64
+#12 41.42 Writing /tmp/composer-cache/files/sebastian/code-unit/947384bfe4963b28ba6df88b7f8535d68314519a.zip into cache from /app/vendor/composer/tmp-6492a264d2ee6781e31eac7f63271b7b.zip
+#12 41.42 Downloading https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3b415def83fbcb41f991d9ebf16ae4ad8b7837b3
+#12 41.50 [302] https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/15c5dd40dc4f38794d383bb95465193f5e0ae180
+#12 41.50 Following redirect (1) https://codeload.github.com/sebastianbergmann/cli-parser/legacy.zip/15c5dd40dc4f38794d383bb95465193f5e0ae180
+#12 41.68 [302] https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3b415def83fbcb41f991d9ebf16ae4ad8b7837b3
+#12 41.68 Following redirect (1) https://codeload.github.com/sebastianbergmann/php-timer/legacy.zip/3b415def83fbcb41f991d9ebf16ae4ad8b7837b3
+#12 41.86 [200] https://codeload.github.com/sebastianbergmann/cli-parser/legacy.zip/15c5dd40dc4f38794d383bb95465193f5e0ae180
+#12 41.86 Writing /tmp/composer-cache/files/sebastian/cli-parser/7917b42dccf77da5de05886328cbe90c9c6e9fe1.zip into cache from /app/vendor/composer/tmp-15131b956ba85d74744cd70dca584690.zip
+#12 41.87 Downloading https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/3e0404dc6b300e6bf56415467ebcb3fe4f33e964
+#12 41.93 [200] https://codeload.github.com/sebastianbergmann/php-timer/legacy.zip/3b415def83fbcb41f991d9ebf16ae4ad8b7837b3
+#12 41.93 Writing /tmp/composer-cache/files/phpunit/php-timer/2645f4227496336a2aeb8bec0d8e3f16e20fd3f9.zip into cache from /app/vendor/composer/tmp-0a3f8f706d9304de9900127894e45c6c.zip
+#12 41.93 Downloading https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/c1ca3814734c07492b3d4c5f794f4b0995333da2
+#12 42.01 [302] https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/3e0404dc6b300e6bf56415467ebcb3fe4f33e964
+#12 42.01 Following redirect (1) https://codeload.github.com/sebastianbergmann/php-text-template/legacy.zip/3e0404dc6b300e6bf56415467ebcb3fe4f33e964
+#12 42.21 [302] https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/c1ca3814734c07492b3d4c5f794f4b0995333da2
+#12 42.21 Following redirect (1) https://codeload.github.com/sebastianbergmann/php-invoker/legacy.zip/c1ca3814734c07492b3d4c5f794f4b0995333da2
+#12 42.39 [200] https://codeload.github.com/sebastianbergmann/php-text-template/legacy.zip/3e0404dc6b300e6bf56415467ebcb3fe4f33e964
+#12 42.40 Writing /tmp/composer-cache/files/phpunit/php-text-template/f890fdccec46940b4633ad050967fc9e1ba119d4.zip into cache from /app/vendor/composer/tmp-2c7f92a71fc82e5adede93e990e637d0.zip
+#12 42.40 Downloading https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/2f3a64888c814fc235386b7387dd5b5ed92ad903
+#12 42.45 [200] https://codeload.github.com/sebastianbergmann/php-invoker/legacy.zip/c1ca3814734c07492b3d4c5f794f4b0995333da2
+#12 42.45 Writing /tmp/composer-cache/files/phpunit/php-invoker/fa21284bd3106889eb5c308e4f8977dcef31b122.zip into cache from /app/vendor/composer/tmp-f1572188b90b7fdf53b65da2ce7ac27a.zip
+#12 42.45 Downloading https://api.github.com/repos/theseer/tokenizer/zipball/b7489ce515e168639d17feec34b8847c326b0b3c
+#12 42.50 [302] https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/2f3a64888c814fc235386b7387dd5b5ed92ad903
+#12 42.50 Following redirect (1) https://codeload.github.com/sebastianbergmann/php-file-iterator/legacy.zip/2f3a64888c814fc235386b7387dd5b5ed92ad903
+#12 42.67 [302] https://api.github.com/repos/theseer/tokenizer/zipball/b7489ce515e168639d17feec34b8847c326b0b3c
+#12 42.67 Following redirect (1) https://codeload.github.com/theseer/tokenizer/legacy.zip/b7489ce515e168639d17feec34b8847c326b0b3c
+#12 42.86 [200] https://codeload.github.com/sebastianbergmann/php-file-iterator/legacy.zip/2f3a64888c814fc235386b7387dd5b5ed92ad903
+#12 42.86 Writing /tmp/composer-cache/files/phpunit/php-file-iterator/422245dcbd611339716ab749b013738aa6c8a17c.zip into cache from /app/vendor/composer/tmp-8144eaa672ce39bae537c3e0bc1efd5c.zip
+#12 42.86 Downloading https://api.github.com/repos/sebastianbergmann/lines-of-code/zipball/d36ad0d782e5756913e42ad87cb2890f4ffe467a
+#12 42.92 [200] https://codeload.github.com/theseer/tokenizer/legacy.zip/b7489ce515e168639d17feec34b8847c326b0b3c
+#12 42.92 Writing /tmp/composer-cache/files/theseer/tokenizer/447a6cd5e755ca245b2193551de2428ee70ed16c.zip into cache from /app/vendor/composer/tmp-b5cafa25cca5ee3ec2d6852f806e0328.zip
+#12 42.92 Downloading https://api.github.com/repos/sebastianbergmann/complexity/zipball/ee41d384ab1906c68852636b6de493846e13e5a0
+#12 42.98 [302] https://api.github.com/repos/sebastianbergmann/lines-of-code/zipball/d36ad0d782e5756913e42ad87cb2890f4ffe467a
+#12 42.98 Following redirect (1) https://codeload.github.com/sebastianbergmann/lines-of-code/legacy.zip/d36ad0d782e5756913e42ad87cb2890f4ffe467a
+#12 43.20 [302] https://api.github.com/repos/sebastianbergmann/complexity/zipball/ee41d384ab1906c68852636b6de493846e13e5a0
+#12 43.21 Following redirect (1) https://codeload.github.com/sebastianbergmann/complexity/legacy.zip/ee41d384ab1906c68852636b6de493846e13e5a0
+#12 43.40 [200] https://codeload.github.com/sebastianbergmann/lines-of-code/legacy.zip/d36ad0d782e5756913e42ad87cb2890f4ffe467a
+#12 43.40 Writing /tmp/composer-cache/files/sebastian/lines-of-code/40e8c68a54c248cd88c0c780f1bcee0e988b9921.zip into cache from /app/vendor/composer/tmp-28410aea8bae1c0e64e9f1554754455e.zip
+#12 43.40 Downloading https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/183a9b2632194febd219bb9246eee421dad8d45e
+#12 43.49 [200] https://codeload.github.com/sebastianbergmann/complexity/legacy.zip/ee41d384ab1906c68852636b6de493846e13e5a0
+#12 43.49 Writing /tmp/composer-cache/files/sebastian/complexity/b30b4cd96bb79d012e4c35ce2e0897e9fa3a4fb2.zip into cache from /app/vendor/composer/tmp-cc46148255719257b6e0354beb61116b.zip
+#12 43.49 Downloading https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/2c1ed04922802c15e1de5d7447b4856de949cf56
+#12 43.56 [302] https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/183a9b2632194febd219bb9246eee421dad8d45e
+#12 43.56 Following redirect (1) https://codeload.github.com/sebastianbergmann/code-unit-reverse-lookup/legacy.zip/183a9b2632194febd219bb9246eee421dad8d45e
+#12 43.73 [302] https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/2c1ed04922802c15e1de5d7447b4856de949cf56
+#12 43.73 Following redirect (1) https://codeload.github.com/sebastianbergmann/php-code-coverage/legacy.zip/2c1ed04922802c15e1de5d7447b4856de949cf56
+#12 43.95 [200] https://codeload.github.com/sebastianbergmann/code-unit-reverse-lookup/legacy.zip/183a9b2632194febd219bb9246eee421dad8d45e
+#12 43.96 Writing /tmp/composer-cache/files/sebastian/code-unit-reverse-lookup/e647f1c3c3ac8eea993465f59c793cde56424acd.zip into cache from /app/vendor/composer/tmp-23321a5dd78bb9d8a381b80d8c39604a.zip
+#12 43.96 Downloading https://api.github.com/repos/phar-io/version/zipball/4f7fd7836c6f332bb2933569e566a0d6c4cbed74
+#12 44.03 [302] https://api.github.com/repos/phar-io/version/zipball/4f7fd7836c6f332bb2933569e566a0d6c4cbed74
+#12 44.03 Following redirect (1) https://codeload.github.com/phar-io/version/legacy.zip/4f7fd7836c6f332bb2933569e566a0d6c4cbed74
+#12 44.21 [200] https://codeload.github.com/sebastianbergmann/php-code-coverage/legacy.zip/2c1ed04922802c15e1de5d7447b4856de949cf56
+#12 44.21 Writing /tmp/composer-cache/files/phpunit/php-code-coverage/2d517a1e0d9b179c305c1a4d910e0a4b159cebcb.zip into cache from /app/vendor/composer/tmp-bc3e241a24069334cc18b57255958084.zip
+#12 44.21 Downloading https://api.github.com/repos/phar-io/manifest/zipball/54750ef60c58e43759730615a392c31c80e23176
+#12 44.28 [200] https://codeload.github.com/phar-io/version/legacy.zip/4f7fd7836c6f332bb2933569e566a0d6c4cbed74
+#12 44.28 Writing /tmp/composer-cache/files/phar-io/version/1495d1d88b1ae7e031b437037ce96298d897a969.zip into cache from /app/vendor/composer/tmp-94d7952b9ed49c131d0c93c43c92d310.zip
+#12 44.29 Downloading https://api.github.com/repos/myclabs/DeepCopy/zipball/8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae
+#12 44.59 [302] https://api.github.com/repos/phar-io/manifest/zipball/54750ef60c58e43759730615a392c31c80e23176
+#12 44.59 Following redirect (1) https://codeload.github.com/phar-io/manifest/legacy.zip/54750ef60c58e43759730615a392c31c80e23176
+#12 44.77 [302] https://api.github.com/repos/myclabs/DeepCopy/zipball/8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae
+#12 44.77 Following redirect (1) https://codeload.github.com/myclabs/DeepCopy/legacy.zip/8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae
+#12 44.96 [200] https://codeload.github.com/phar-io/manifest/legacy.zip/54750ef60c58e43759730615a392c31c80e23176
+#12 44.96 Writing /tmp/composer-cache/files/phar-io/manifest/76bff606ca30e559b645a1f35d005f1f29c3c86e.zip into cache from /app/vendor/composer/tmp-a32d3c3dbfb9bffd7b806a4404c2fa61.zip
+#12 44.97 Downloading https://api.github.com/repos/sebastianbergmann/phpunit/zipball/36b75bf56a8535623f5b3e24b27ea1823759da1a
+#12 45.25 [200] https://codeload.github.com/myclabs/DeepCopy/legacy.zip/8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae
+#12 45.25 Writing /tmp/composer-cache/files/myclabs/deep-copy/b779fa11206a042f91c9d0810a71e04415cb5c2d.zip into cache from /app/vendor/composer/tmp-006992e4a66eaf4d3d262ebb50010c8b.zip
+#12 45.25 [302] https://api.github.com/repos/sebastianbergmann/phpunit/zipball/36b75bf56a8535623f5b3e24b27ea1823759da1a
+#12 45.25 Following redirect (1) https://codeload.github.com/sebastianbergmann/phpunit/legacy.zip/36b75bf56a8535623f5b3e24b27ea1823759da1a
+#12 45.92 [200] https://codeload.github.com/sebastianbergmann/phpunit/legacy.zip/36b75bf56a8535623f5b3e24b27ea1823759da1a
+#12 45.92 Writing /tmp/composer-cache/files/phpunit/phpunit/ffdfe1cb7a40615e9dde58d9644ffc4dd49cf5cf.zip into cache from /app/vendor/composer/tmp-430160fd1382810c72bcf7cfa0b1bcf2.zip
+#12 45.92   - Installing doctrine/inflector (2.1.1): Extracting archive
+#12 45.93 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/09418449'
+#12 45.95 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/09418449'
+#12 45.95   - Installing doctrine/lexer (3.0.3): Extracting archive
+#12 45.96 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/006544ae'
+#12 45.97 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/006544ae'
+#12 45.97   - Installing dragonmantank/cron-expression (v3.6.1): Extracting archive
+#12 45.97 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/dc367ba3'
+#12 45.98 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/dc367ba3'
+#12 45.98   - Installing symfony/deprecation-contracts (v3.7.1): Extracting archive
+#12 45.98 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/454a81a7'
+#12 45.99 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/454a81a7'
+#12 45.99   - Installing psr/container (2.0.2): Extracting archive
+#12 45.99 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/9eeed3ff'
+#12 46.00 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/9eeed3ff'
+#12 46.00   - Installing fakerphp/faker (v1.24.1): Extracting archive
+#12 46.01 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/ced5e235'
+#12 46.24 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/ced5e235'
+#12 46.24   - Installing symfony/polyfill-mbstring (v1.43.3): Extracting archive
+#12 46.24 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/87696cc0'
+#12 46.25 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/87696cc0'
+#12 46.25   - Installing symfony/http-foundation (v7.4.22): Extracting archive
+#12 46.25 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/bb77938c'
+#12 46.29 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/bb77938c'
+#12 46.29   - Installing fruitcake/php-cors (v1.4.0): Extracting archive
+#12 46.29 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/48285ae6'
+#12 46.30 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/48285ae6'
+#12 46.30   - Installing symfony/polyfill-php80 (v1.43.0): Extracting archive
+#12 46.30 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/887f4011'
+#12 46.31 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/887f4011'
+#12 46.31   - Installing psr/http-message (2.0): Extracting archive
+#12 46.32 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/f9dbb89a'
+#12 46.32   - Installing psr/http-client (1.0.3): Extracting archive
+#12 46.33 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/d99dd9ff'
+#12 46.33   - Installing ralouphie/getallheaders (3.0.3): Extracting archive
+#12 46.34 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/53b64b69'
+#12 46.34   - Installing psr/http-factory (1.1.0): Extracting archive
+#12 46.34 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/83aa87a4'
+#12 46.35   - Installing guzzlehttp/psr7 (2.13.2): Extracting archive
+#12 46.36 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/2177d76f'
+#12 46.37   - Installing guzzlehttp/promises (2.6.0): Extracting archive
+#12 46.37 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/6b07dcee'
+#12 46.39   - Installing guzzlehttp/guzzle (7.16.1): Extracting archive
+#12 46.39 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/4a2c7c1f'
+#12 46.42   - Installing guzzlehttp/uri-template (v1.0.11): Extracting archive
+#12 46.43 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/58ea2458'
+#12 46.43   - Installing symfony/polyfill-intl-normalizer (v1.43.0): Extracting archive
+#12 46.43 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/5127606c'
+#12 46.45   - Installing symfony/polyfill-intl-grapheme (v1.43.3): Extracting archive
+#12 46.45 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/17b8c717'
+#12 46.46   - Installing symfony/polyfill-ctype (v1.37.0): Extracting archive
+#12 46.46 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/036a711c'
+#12 46.46   - Installing symfony/string (v7.4.22): Extracting archive
+#12 46.47 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/d7b5d968'
+#12 46.48   - Installing symfony/service-contracts (v3.7.3): Extracting archive
+#12 46.48 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/4f9795cd'
+#12 46.49   - Installing symfony/console (v7.4.22): Extracting archive
+#12 46.50 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/aa108a4f'
+#12 46.54   - Installing nunomaduro/termwind (v2.4.0): Extracting archive
+#12 46.54 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/92c18af9'
+#12 46.55   - Installing voku/portable-ascii (2.1.1): Extracting archive
+#12 46.55 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/419bc971'
+#12 46.60   - Installing phpoption/phpoption (1.10.0): Extracting archive
+#12 46.60 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/49966423'
+#12 46.61   - Installing graham-campbell/result-type (v1.2.0): Extracting archive
+#12 46.61 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/e8c10752'
+#12 46.61   - Installing vlucas/phpdotenv (v5.8.0): Extracting archive
+#12 46.62 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/76f61a3b'
+#12 46.63   - Installing symfony/css-selector (v7.4.22): Extracting archive
+#12 46.63 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/6a1fbfef'
+#12 46.64   - Installing tijsverkoyen/css-to-inline-styles (v2.4.0): Extracting archive
+#12 46.65 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/eca893fc'
+#12 46.65   - Installing symfony/var-dumper (v7.4.22): Extracting archive
+#12 46.65 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/36980cbb'
+#12 46.68   - Installing symfony/polyfill-uuid (v1.43.0): Extracting archive
+#12 46.68 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/5e65e628'
+#12 46.69   - Installing symfony/uid (v7.4.21): Extracting archive
+#12 46.69 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/68f5958d'
+#12 46.70   - Installing symfony/routing (v7.4.22): Extracting archive
+#12 46.70 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/b97b4e02'
+#12 46.73   - Installing symfony/process (v7.4.22): Extracting archive
+#12 46.73 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/b8d8861c'
+#12 46.74   - Installing symfony/polyfill-php85 (v1.43.0): Extracting archive
+#12 46.74 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/f0ac2835'
+#12 46.75   - Installing symfony/polyfill-php84 (v1.43.0): Extracting archive
+#12 46.75 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/841b3d23'
+#12 46.77   - Installing symfony/polyfill-php83 (v1.43.0): Extracting archive
+#12 46.77 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/c46c45e4'
+#12 46.79   - Installing symfony/polyfill-intl-idn (v1.43.0): Extracting archive
+#12 46.79 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/d5124f5a'
+#12 46.81   - Installing symfony/mime (v7.4.22): Extracting archive
+#12 46.81 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/538fe0df'
+#12 46.85   - Installing psr/event-dispatcher (1.0.0): Extracting archive
+#12 46.85 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/a844d7a8'
+#12 46.86   - Installing symfony/event-dispatcher-contracts (v3.7.1): Extracting archive
+#12 46.86 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/6401b909'
+#12 46.87   - Installing symfony/event-dispatcher (v7.4.17): Extracting archive
+#12 46.87 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/407d5c50'
+#12 46.88   - Installing psr/log (3.0.2): Extracting archive
+#12 46.88 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/6d3d5caf'
+#12 46.89   - Installing egulias/email-validator (4.0.4): Extracting archive
+#12 46.90 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/d16b4b2c'
+#12 46.94   - Installing symfony/mailer (v7.4.22): Extracting archive
+#12 46.94 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/b8a2ad75'
+#12 46.97   - Installing symfony/error-handler (v7.4.22): Extracting archive
+#12 46.98 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/cc0b85ff'
+#12 47.01   - Installing symfony/http-kernel (v7.4.22): Extracting archive
+#12 47.01 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/71d08503'
+#12 47.10   - Installing symfony/finder (v7.4.22): Extracting archive
+#12 47.10 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/6bb84883'
+#12 47.12   - Installing ramsey/collection (2.1.1): Extracting archive
+#12 47.13 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/c5e959f3'
+#12 47.15   - Installing brick/math (0.14.8): Extracting archive
+#12 47.15 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/fac0b17c'
+#12 47.16   - Installing ramsey/uuid (4.9.4): Extracting archive
+#12 47.17 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/625f2f42'
+#12 47.20   - Installing psr/simple-cache (3.0.0): Extracting archive
+#12 47.20 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/84b55343'
+#12 47.21   - Installing symfony/translation-contracts (v3.7.1): Extracting archive
+#12 47.21 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/a3857c0f'
+#12 47.23   - Installing symfony/translation (v7.4.22): Extracting archive
+#12 47.23 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/f690273c'
+#12 47.28   - Installing symfony/polyfill-time (v1.42.0): Extracting archive
+#12 47.28 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/6b3e3d9d'
+#12 47.29   - Installing psr/clock (1.0.0): Extracting archive
+#12 47.29 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/d80ee893'
+#12 47.31   - Installing symfony/clock (v7.4.21): Extracting archive
+#12 47.31 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/1343d646'
+#12 47.32   - Installing carbonphp/carbon-doctrine-types (3.2.1): Extracting archive
+#12 47.32 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/95b30907'
+#12 47.34   - Installing nesbot/carbon (3.15.1): Extracting archive
+#12 47.34 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/2307342b'
+#12 47.52   - Installing monolog/monolog (3.12.1): Extracting archive
+#12 47.53 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/459f3097'
+#12 47.56   - Installing league/uri-interfaces (7.9.1): Extracting archive
+#12 47.56 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/5bc797bc'
+#12 47.57   - Installing league/uri (7.9.1): Extracting archive
+#12 47.58 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/8598e09f'
+#12 47.60   - Installing league/mime-type-detection (1.17.0): Extracting archive
+#12 47.60 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/c246afe6'
+#12 47.61   - Installing league/flysystem-local (3.35.3): Extracting archive
+#12 47.61 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/4692b9ad'
+#12 47.61   - Installing league/flysystem (3.36.0): Extracting archive
+#12 47.62 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/55847398'
+#12 47.64   - Installing nette/utils (v4.1.6): Extracting archive
+#12 47.64 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/13d8a6b1'
+#12 47.66   - Installing nette/schema (v1.4.0): Extracting archive
+#12 47.66 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/eea661b0'
+#12 47.67   - Installing dflydev/dot-access-data (v3.0.3): Extracting archive
+#12 47.67 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/0dcc74c3'
+#12 47.69   - Installing league/config (v1.2.0): Extracting archive
+#12 47.69 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/a499f94c'
+#12 47.70   - Installing league/commonmark (2.10.7): Extracting archive
+#12 47.70 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/0d7a9b85'
+#12 47.77   - Installing laravel/serializable-closure (v2.1.0): Extracting archive
+#12 47.77 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/572d9361'
+#12 47.80   - Installing laravel/prompts (v0.3.26): Extracting archive
+#12 47.81 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/f32e3608'
+#12 47.83   - Installing laravel/framework (v12.71.0): Extracting archive
+#12 47.84 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/abd1ceab'
+#12 48.21   - Installing laravel/pail (v1.2.7): Extracting archive
+#12 48.22 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/f8bf6a73'
+#12 48.23   - Installing laravel/pint (v1.32.1): Extracting archive
+#12 48.23 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/d696a031'
+#12 48.26   - Installing symfony/yaml (v7.4.22): Extracting archive
+#12 48.26 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/d14062d5'
+#12 48.28   - Installing laravel/sail (v1.69.0): Extracting archive
+#12 48.28 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/179f7b9f'
+#12 48.30   - Installing laravel/sanctum (v4.3.3): Extracting archive
+#12 48.30 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/18c1fc2d'
+#12 48.31   - Installing nikic/php-parser (v5.9.0): Extracting archive
+#12 48.31 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/26e74e49'
+#12 48.37   - Installing psy/psysh (v0.12.24): Extracting archive
+#12 48.37 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/9b83f7ff'
+#12 48.48   - Installing laravel/tinker (v2.11.1): Extracting archive
+#12 48.48 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/abe7e833'
+#12 48.49   - Installing hamcrest/hamcrest-php (v3.0.0): Extracting archive
+#12 48.49 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/5b44ee70'
+#12 48.52   - Installing mockery/mockery (1.6.15): Extracting archive
+#12 48.52 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/b6c38be9'
+#12 48.56   - Installing filp/whoops (2.19.1): Extracting archive
+#12 48.56 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/2191db56'
+#12 48.58   - Installing nunomaduro/collision (v8.9.5): Extracting archive
+#12 48.58 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/7d4ee07b'
+#12 48.60   - Installing staabm/side-effects-detector (1.0.5): Extracting archive
+#12 48.60 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/6abd9a95'
+#12 48.61   - Installing sebastian/version (5.0.2): Extracting archive
+#12 48.61 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/8a189eb7'
+#12 48.62   - Installing sebastian/type (5.1.3): Extracting archive
+#12 48.62 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/b348a1ea'
+#12 48.64   - Installing sebastian/recursion-context (6.0.3): Extracting archive
+#12 48.64 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/62eb645e'
+#12 48.65   - Installing sebastian/object-reflector (4.0.1): Extracting archive
+#12 48.65 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/5df58d90'
+#12 48.66   - Installing sebastian/object-enumerator (6.0.1): Extracting archive
+#12 48.66 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/51ee41d6'
+#12 48.67   - Installing sebastian/global-state (7.0.2): Extracting archive
+#12 48.67 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/3b6091ee'
+#12 48.68   - Installing sebastian/exporter (6.3.2): Extracting archive
+#12 48.68 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/9476ad83'
+#12 48.70   - Installing sebastian/environment (7.2.1): Extracting archive
+#12 48.70 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/a53b0b43'
+#12 48.71   - Installing sebastian/diff (6.0.2): Extracting archive
+#12 48.71 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/3f9b5f98'
+#12 48.73   - Installing sebastian/comparator (6.3.3): Extracting archive
+#12 48.73 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/eae43f9b'
+#12 48.75   - Installing sebastian/code-unit (3.0.3): Extracting archive
+#12 48.75 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/daf6a669'
+#12 48.76   - Installing sebastian/cli-parser (3.0.2): Extracting archive
+#12 48.76 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/df7b42d4'
+#12 48.77   - Installing phpunit/php-timer (7.0.1): Extracting archive
+#12 48.78 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/2fa2aefa'
+#12 48.79   - Installing phpunit/php-text-template (4.0.1): Extracting archive
+#12 48.79 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/9cdd9b0d'
+#12 48.80   - Installing phpunit/php-invoker (5.0.1): Extracting archive
+#12 48.80 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/304f6b9b'
+#12 48.81   - Installing phpunit/php-file-iterator (5.1.1): Extracting archive
+#12 48.82 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/44f21360'
+#12 48.83   - Installing theseer/tokenizer (1.3.1): Extracting archive
+#12 48.83 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/32d2fd23'
+#12 48.84   - Installing sebastian/lines-of-code (3.0.1): Extracting archive
+#12 48.84 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/2d6cb2a7'
+#12 48.85   - Installing sebastian/complexity (4.0.1): Extracting archive
+#12 48.85 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/87b85e0b'
+#12 48.86   - Installing sebastian/code-unit-reverse-lookup (4.0.1): Extracting archive
+#12 48.86 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/e8298cb2'
+#12 48.87   - Installing phpunit/php-code-coverage (11.0.12): Extracting archive
+#12 48.87 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/acfbb918'
+#12 48.92   - Installing phar-io/version (3.2.1): Extracting archive
+#12 48.92 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/61c81005'
+#12 48.94   - Installing phar-io/manifest (2.0.4): Extracting archive
+#12 48.94 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/ac3acf28'
+#12 48.96   - Installing myclabs/deep-copy (1.14.0): Extracting archive
+#12 48.97 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/ad953779'
+#12 48.99   - Installing phpunit/phpunit (11.5.57): Extracting archive
+#12 48.99 Executing command (CWD): 'rm' '-rf' '/app/vendor/composer/7d0bc722'
+#12 49.21 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/f9dbb89a'
+#12 49.21 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/d99dd9ff'
+#12 49.21 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/53b64b69'
+#12 49.21 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/83aa87a4'
+#12 49.22 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/2177d76f'
+#12 49.22 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/6b07dcee'
+#12 49.22 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/4a2c7c1f'
+#12 49.22 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/58ea2458'
+#12 49.22 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/5127606c'
+#12 49.23 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/17b8c717'
+#12 49.28 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/036a711c'
+#12 49.28 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/d7b5d968'
+#12 49.28 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/4f9795cd'
+#12 49.29 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/aa108a4f'
+#12 49.29 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/92c18af9'
+#12 49.29 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/419bc971'
+#12 49.29 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/49966423'
+#12 49.29 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/e8c10752'
+#12 49.30 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/76f61a3b'
+#12 49.30 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/6a1fbfef'
+#12 49.37 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/eca893fc'
+#12 49.37 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/36980cbb'
+#12 49.38 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/5e65e628'
+#12 49.38 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/68f5958d'
+#12 49.38 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/b97b4e02'
+#12 49.38 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/b8d8861c'
+#12 49.38 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/f0ac2835'
+#12 49.38 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/841b3d23'
+#12 49.39 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/c46c45e4'
+#12 49.39 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/d5124f5a'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/538fe0df'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/a844d7a8'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/6401b909'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/407d5c50'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/6d3d5caf'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/d16b4b2c'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/b8a2ad75'
+#12 49.47 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/cc0b85ff'
+#12 49.48 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/71d08503'
+#12 49.48 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/6bb84883'
+#12 49.57 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/c5e959f3'
+#12 49.58 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/fac0b17c'
+#12 49.58 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/625f2f42'
+#12 49.58 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/84b55343'
+#12 49.59 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/a3857c0f'
+#12 49.59 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/f690273c'
+#12 49.59 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/6b3e3d9d'
+#12 49.59 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/d80ee893'
+#12 49.60 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/1343d646'
+#12 49.60 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/95b30907'
+#12 49.71 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/2307342b'
+#12 49.71 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/459f3097'
+#12 49.71 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/5bc797bc'
+#12 49.71 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/8598e09f'
+#12 49.71 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/c246afe6'
+#12 49.72 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/4692b9ad'
+#12 49.72 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/55847398'
+#12 49.72 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/13d8a6b1'
+#12 49.72 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/eea661b0'
+#12 49.72 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/0dcc74c3'
+#12 49.84 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/a499f94c'
+#12 49.84 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/0d7a9b85'
+#12 49.84 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/572d9361'
+#12 49.85 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/f32e3608'
+#12 49.85 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/abd1ceab'
+#12 49.85 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/f8bf6a73'
+#12 49.85 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/d696a031'
+#12 49.86 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/d14062d5'
+#12 49.86 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/179f7b9f'
+#12 49.86 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/18c1fc2d'
+#12 50.00 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/26e74e49'
+#12 50.00 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/9b83f7ff'
+#12 50.01 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/abe7e833'
+#12 50.01 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/5b44ee70'
+#12 50.01 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/b6c38be9'
+#12 50.01 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/2191db56'
+#12 50.01 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/7d4ee07b'
+#12 50.02 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/6abd9a95'
+#12 50.02 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/8a189eb7'
+#12 50.02 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/b348a1ea'
+#12 50.15 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/62eb645e'
+#12 50.16 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/5df58d90'
+#12 50.16 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/51ee41d6'
+#12 50.16 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/3b6091ee'
+#12 50.16 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/9476ad83'
+#12 50.16 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/a53b0b43'
+#12 50.17 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/3f9b5f98'
+#12 50.17 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/eae43f9b'
+#12 50.17 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/daf6a669'
+#12 50.17 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/df7b42d4'
+#12 50.33 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/2fa2aefa'
+#12 50.33 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/9cdd9b0d'
+#12 50.33 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/304f6b9b'
+#12 50.33 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/44f21360'
+#12 50.33 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/32d2fd23'
+#12 50.34 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/2d6cb2a7'
+#12 50.34 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/87b85e0b'
+#12 50.34 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/e8298cb2'
+#12 50.35 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/acfbb918'
+#12 50.35 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/61c81005'
+#12 50.50 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/ac3acf28'
+#12 50.50 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/ad953779'
+#12 50.51 Executing async command (CWD): 'rm' '-rf' '/app/vendor/composer/7d0bc722'
+#12 50.57 Downloading https://packagist.org/downloads/
+#12 51.26 [201] https://packagist.org/downloads/
+#12 51.28 Generating optimized autoload files
+#12 53.77 > post-autoload-dump: Illuminate\Foundation\ComposerScripts::postAutoloadDump
+#12 53.82 > post-autoload-dump: @php artisan package:discover --ansi
+#12 53.82 Executing command (CWD): '/usr/local/bin/php' -d allow_url_fopen='1' -d disable_functions='' -d memory_limit='1536M' artisan package:discover --ansi
+#12 54.19 
+#12 54.19   [37;44m INFO [39;49m Discovering packages.  
+#12 54.19 
+#12 54.20   laravel/pail [90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m [32;1mDONE[39;22m
+#12 54.20   laravel/sail [90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m [32;1mDONE[39;22m
+#12 54.20   laravel/sanctum [90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m [32;1mDONE[39;22m
+#12 54.20   laravel/tinker [90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m [32;1mDONE[39;22m
+#12 54.21   nesbot/carbon [90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m [32;1mDONE[39;22m
+#12 54.21   nunomaduro/collision [90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m [32;1mDONE[39;22m
+#12 54.21   nunomaduro/termwind [90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m[90m.[39m [32;1mDONE[39;22m
+#12 54.21 
+#12 54.23 82 packages you are using are looking for funding.
+#12 54.23 Use the `composer fund` command to find out more!
+#12 54.56 Checking platform requirements for packages in the vendor dir
+#12 54.59 composer-runtime-api 2.2.2      success                                       
+#12 54.59 ext-ctype            *          success provided by symfony/polyfill-ctype    
+#12 54.59 ext-dom              20031129   success                                       
+#12 54.59 ext-fileinfo         8.4.27     success                                       
+#12 54.59 ext-filter           8.4.27     success                                       
+#12 54.59 ext-hash             8.4.27     success                                       
+#12 54.59 ext-iconv            8.4.27     success                                       
+#12 54.59 ext-json             8.4.27     success                                       
+#12 54.59 ext-libxml           8.4.27     success                                       
+#12 54.59 ext-mbstring         *          success provided by symfony/polyfill-mbstring 
+#12 54.59 ext-openssl          8.4.27     success                                       
+#12 54.59 ext-pcre             8.4.27     success                                       
+#12 54.59 ext-phar             8.4.27     success                                       
+#12 54.59 ext-session          8.4.27     success                                       
+#12 54.59 ext-tokenizer        8.4.27     success                                       
+#12 54.59 ext-xml              8.4.27     success                                       
+#12 54.59 ext-xmlwriter        8.4.27     success                                       
+#12 54.59 php                  8.4.27     success                                       
+#12 DONE 55.0s
+
+#13 [php] exporting to image
+#13 exporting layers
+#13 exporting layers 5.0s done
+#13 exporting manifest sha256:b3ade72919d58547a28be8f50b95722801e5b65d279b70fac5abf456bc5d5faf 0.0s done
+#13 exporting config sha256:4718f4487f7d676e5619e8fe24c9f59b3992d513ed156d6c8b6eb692afebb9f1 0.0s done
+#13 exporting attestation manifest sha256:4fdb34b914a7e84ce50f7af9da5ab7f3b529da3f6923af626e4b531e2e382116 0.0s done
+#13 exporting manifest list sha256:ccb63d217c14a655a73b4bd9b0491dcfd0eb42e7ba49a026bc7edb9f91450d8e 0.0s done
+#13 naming to docker.io/library/projeto3c-php:latest
+#13 naming to docker.io/library/projeto3c-php:latest done
+#13 unpacking to docker.io/library/projeto3c-php:latest
+#13 unpacking to docker.io/library/projeto3c-php:latest 3.2s done
+#13 DONE 8.3s
+
+#14 [php] resolving provenance for metadata file
+#14 DONE 0.1s
+ php  Built
